@@ -35,6 +35,7 @@ Route::get('SalesDetailEdit','Admin\Transaksi\Sales_DetailController@edit');
 Route::get('SalesDetailDestroy','Admin\Transaksi\Sales_DetailController@destroy');
 
 Route::get('PosIndex','Admin\Transaksi\PosController@Index');
+Route::get('PosIndex','Admin\Transaksi\PosController@Create');
 
 Route::get('CategoriesIndex','Admin\Master\CategoriesController@index');
 Route::get('CategoriesCreate','Admin\Master\CategoriesController@create');

@@ -29,7 +29,8 @@ class ProductController extends Controller
     public function create()
     {
         //
-		return view('Master/Product/Product_input');
+		$categories=DB::table('categories')->get();
+		return view('Master/Product/Product_input',['categories'=>$categories]);
     }
 
     /**
@@ -41,9 +42,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+			DB::table('categories')->get();
 			DB::table('product')->insert([
 			'PRODUCT_ID' => $request->idpr,
-			'CATEGORY_ID' => $request->idcatpr,
+			'CATEGORY_ID' => $request->idcat,
 			'PRODUCT_NAME' => $request->prname,
 			'PRODUCT_PRICE' => $request->prprice,
 			'PRODUCT_STOCK' => $request->prstock,

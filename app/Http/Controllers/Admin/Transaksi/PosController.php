@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Transaksi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PosController extends Controller
 {
@@ -26,7 +27,10 @@ class PosController extends Controller
     public function create()
     {
         //
-		return view('Transaksi/sales/salesCreate');
+		
+		$categories=DB::table('categories')->get();
+		$product=DB::table('product')->get();
+		return view('Transaksi/Pos/Pos',['categories'=>$categories, 'product'=>$product]);
     }
 
     /**

@@ -19,7 +19,15 @@
 	  <div class="form-group row" >
 		<label class="col-sm-3 form-control-label">Category Id</label>
 		<div class="col-sm-9">
-		  <input type="text" class="form-control" name="idcatpr" id="idcatpr">
+		  <select id="inlineFormInput" name="idcat" class="form-control mb-3 mb-3">
+				@foreach ($categories as $cat)                   
+                      <option value="{{ $cat->CATEGORY_ID }}">
+						  @if($cat->CATEGORY_STATUS == 0)
+								{{ $cat->CATEGORY_NAME }}
+							@endif
+						 </option>
+                  @endforeach
+			</select>
 		</div>
 	  </div>
 	  <div class="line"></div>
