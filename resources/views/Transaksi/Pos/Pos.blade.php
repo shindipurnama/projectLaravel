@@ -6,29 +6,66 @@
 
 @section('konten')
 
-<div class="col-lg-12">
-<div class="block margin-bottom-sm">
-	<table width="100%">
-		<thead>
-		<th><label class="col-sm-form-control-label">Auto Id</label>
-		<label for="inlineFormInput" class="sr-only">Name</label>
-		<input id="inlineFormInput" type="text" disabled="" placeholder="Category Id" class="mr-sm-3 form-control"></th>
-		<th><label class="col-sm-form-control-label">Category Name</label>
-		<div class="col-sm-5">
-		  <select id="inlineFormInput" name="idcat" class="form-control mb-3 mb-3">
-				@foreach ($categories as $cat)                   
-                    <option value="{{ $cat->CATEGORY_ID }}">
-						  @if($cat->CATEGORY_STATUS == 0)
-								{{ $cat->CATEGORY_NAME }}
-							@endif
-					  </option>
-                      @endforeach
-			</select>
+`<div class="col-lg-12">
+<div class="row">
+	<div class="col-lg-3">
+		<div class="block margin-bottom-sm">
+			<label for="inlineFormInput" class="col-sm-form-control-label">Nota</label>
+				<input id="subtotal-val" type="text" placeholder="NT001" class="mr-sm-3 form-control">
+			<label for="inlineFormInput" class="col-sm-form-control-label">Date</label>
+				<input id="pajak" type="text"  placeholder="03/042020" class="mr-sm-3 form-control">
+		</div>
+	</div>
+
+	<div class="col-lg-5">
+		<div class="block margin-bottom-sm">
+			<label for="inlineFormInput" class="col-sm-form-control-label">User</label>
+				<select id="inlineFormInput" name="iduser" class="form-control mb-0 mb-0">
+				<option disabled selected>Pilih User</option>
+					@foreach ($user as $us)                   
+						<option value="{{ $us->USER_ID }}">
+							@if($us->JOB_STATUS == 0)
+									{{ $us->FIRST_NAME }}
+								@endif
+						</option>
+						@endforeach
+				</select>
+			<label for="inlineFormInput" class="col-sm-form-control-label">Customer</label>
+				<select id="inlineFormInput" name="idcus" class="form-control mb-0 mb-0">
+					<option disabled selected>Pilih Customer</option>
+					@foreach ($customer as $cus)                   
+						<option value="{{ $cus->CUSTOMER_ID }}">
+							@if($cus->CUSTOMER_STATUS == 0)
+									{{ $cus->FIRST_NAME }}
+								@endif
+						</option>
+						@endforeach
+				</select>
 			</div>
-			</th>
-		</thead>
-	</table>
-	  <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#myModal" >Select Product</button>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="block margin-bottom-sm">
+				<label class="col-sm-form-control-label">Category ID</label>
+				<input for="inlineFormInput" id="total-val" type="text" disabled="" placeholder="AUTO" class="mr-sm-1 form-control">
+				<label for="inlineFormInput" class="col-sm-form-control-label">Category Name</label>
+					<select id="inlineFormInput" name="idcat" class="form-control mb-0 mb-0">
+					<option disabled selected>Pilih Category</option>
+						@foreach ($categories as $cat)                   
+							<option value="{{ $cat->CATEGORY_ID }}">
+								@if($cat->CATEGORY_STATUS == 0)
+										{{ $cat->CATEGORY_NAME }}
+									@endif
+							</option>
+							@endforeach
+					</select>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="block margin-bottom-sm">
+	  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Select Product</button>
 	<br>
 	<table id="keranjang" width="100%" cellpadding="10px" bordercolorlight="#E8A7A8" border="2"> 
 		<thead>
@@ -36,32 +73,36 @@
 			<th width="45">Qty</th>
 			<th width="212">Price</th>
 			<th width="228">Sub Total</th>
-		<td width="43"> Action</thead>
+			<th width="43"> Action</th>
+		</thead>
 		<tbody>
 		</tbody>
 	</table>
-	
-  </div>
+	</div>
+
 
 
 <div class="row">
-<div class="col-lg-8">
-	<div class="block margin-bottom-sm">
-		<label class="col-sm-form-control-label">Sub Total</label>
-		<input id="subtotal-val" type="text" disabled="" placeholder="Rp. 10.000" class="mr-sm-3 form-control">
-		<label class="col-sm-form-control-label">Tax</label>
-		<input id="pajak" type="text" disabled="" placeholder="10%" class="mr-sm-3 form-control">
-		<label class="col-sm-form-control-label">Discount</label>
-		<input id="discount" type="text" placeholder="0" class="mr-sm-3 form-control" oninput="total()">
+	<div class="col-lg-8">
+		<div class="block margin-bottom-sm">
+			<label class="col-sm-form-control-label">Sub Total</label>
+			<input id="subtotal-val" type="text" disabled="" placeholder="Rp. 10.000" class="mr-sm-3 form-control">
+			<label class="col-sm-form-control-label">Tax</label>
+			<input id="pajak" type="text" disabled="" placeholder="10%" class="mr-sm-3 form-control">
+			<label class="col-sm-form-control-label">Discount</label>
+			<input id="discount" type="text" placeholder="0" class="mr-sm-3 form-control" oninput="total()">
+		</div>
 	</div>
-</div>
 
-<div class="col-lg-4">
-	<div class="block margin-bottom-sm">
-		<label class="col-sm-form-control-label">Total</label>
-		<input id="total-val" type="text" disabled="" placeholder="Rp. 10.000" class="mr-sm-3 form-control">
+	<div class="col-lg-4">
+		<div class="block margin-bottom-sm">
+			<label class="col-sm-form-control-label">Total</label>
+			<input id="total-val" type="text" disabled="" placeholder="Rp. 10.000" class="mr-sm-3 form-control">
+			<center> <br> 
+			<button type="submit" class="btn btn-info">add payment</button>
+			<button type="submit" class="btn btn-warning">cancel</button></center> 
+		</div>
 	</div>
-</div>
 </div>
 </div>
 
@@ -119,6 +160,7 @@
 			modal();
 		}
 	}
+
 	function pilihBarang(id){
 		var index;
 		for(var i=0;i<barang.length;i++){

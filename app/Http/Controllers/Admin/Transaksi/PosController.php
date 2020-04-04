@@ -27,10 +27,15 @@ class PosController extends Controller
     public function create()
     {
         //
-		
+        $user=DB::table('user')->get();
+		$customer=DB::table('customer')->get();
 		$categories=DB::table('categories')->get();
 		$product=DB::table('product')->get();
-		return view('Transaksi/Pos/Pos',['categories'=>$categories, 'product'=>$product]);
+		return view('Transaksi/Pos/Pos',[
+            'user'=>$user,
+            'customer'=>$customer,
+            'categories'=>$categories, 
+            'product'=>$product]);
     }
 
     /**
