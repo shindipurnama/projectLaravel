@@ -10,7 +10,7 @@
 	 <div class="title"><strong>Please Fill The BOX</strong></div>
 	<form class="form-horizontal" action="UserStore" method="post">
 		{{ @csrf_field() }}
-	  <div class="form-group row" action="CategoriesStore" method="post">
+	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">User Id</label>
 		<div class="col-sm-9">
 		  <input type="text" disabled="" placeholder="Auto" class="form-control" name="iduser" id="iduser">
@@ -56,7 +56,11 @@
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Job Status</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" name="jsuser" id="jsuser">
+		<select name="jsuser" class="form-control mb-3 mb-3" > 
+			<option disabled selected>Pilih Status</option>
+			<option  value="0">Active</option>
+			<option  value="1">Non - Active</option>
+		  </select>
 		  </div>
 	  </div>
 	  <div class="line"></div>

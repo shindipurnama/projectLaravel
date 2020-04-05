@@ -23,52 +23,8 @@
 		  </tr>
 		</thead>
 		<tbody>
-		<tr>
-		  <td>1</td>
-		  <td>NT001</td>
-		  <td>CS001</td>
-		  <td>US001</td>
-		  <td>03/03/2020</td>
-		  <td>Rp. 40.000</td>
-		  <td><a href="" class="btn btn-info">Edit</a>
-			  <button type="button" data-toggle="modal" data-target="#myModaldel" class="btn btn-danger">Delete</button>
-			  <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">View detail</button></td>
-		</tr>
-		<tr>
-		  <td>2</td>
-		  <td>NT002</td>
-		  <td>CS002</td>
-		  <td>US004</td>
-		  <td>03/03/2020</td>
-		  <td>Rp. 60.000</td>
-		  <td><a href="" class="btn btn-info">Edit</a>
-			  <button type="button" data-toggle="modal" data-target="#myModaldel1" class="btn btn-danger">Delete</button>
-			  <button type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-primary">View detail</button>
-		  </td>
-		</tr>
-		<tr>
-		  <td>3</td>
-		  <td>NT003</td>
-		  <td>CS003</td>
-		  <td>US002</td>
-		  <td>03/04/2020</td>
-		  <td>Rp. 50.000</td>
-		  <td><a href="" class="btn btn-info">Edit</a>
-			  <button type="button" data-toggle="modal" data-target="#myModaldel2" class="btn btn-danger">Delete</button>
-			  <button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-primary">View detail</button>
-		  </td></tr>
-		<tr>
-		  <td>4</td>
-		  <td>NT001</td>
-		  <td>CS004</td>
-		  <td>US002</td>
-		  <td>03/05/2020</td>
-		  <td>Rp. 70.000</td>
-		  <td><a href="" class="btn btn-info">Edit</a>
-			  <button type="button" data-toggle="modal" data-target="#myModaldel" class="btn btn-danger">Delete</button>
-			  <button type="button" data-toggle="modal" data-target="#myModal3" class="btn btn-primary">View detail</button>
-		  </td>
-		</tr>
+			<tr>
+			</tr>
 		</tbody>
 		</table>
 				  </div>
@@ -100,22 +56,6 @@
 			</thead>
 			<tbody>
 			<tr>
-			  <td>1</td>
-			  <td>NT001</td>
-			  <td>PR001</td>
-			  <td>2</td>
-			  <td>Rp. 10.000</td>
-			  <td>10%</td>
-			  <td>Rp. 18.000</td>
-			</tr>
-			<tr>
-			  <td>2</td>
-			  <td>NT002</td>
-			  <td>PR002</td>
-			  <td>1</td>
-			  <td>Rp. 22.000</td>
-			  <td>0%</td>
-			  <td>Rp. 22.000</td>
 			</tr>
 			</tbody>
 			</table>

@@ -74,8 +74,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        $categories=DB::table('categories')->get();
 		$product = DB::table('product')->where('product_id',$id)->get();
-		return view('Master/Product/Product_edit',['product' => $product]);
+		return view('Master/Product/Product_edit',['product' => $product, 'categories'=>$categories]);
     }
 
     /**
@@ -88,14 +89,14 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         //
+        DB::table('categories')->get();
 		DB::table('product')->where('PRODUCT_ID',$request->idpr)->update([
-			'CATEGORY_ID' => $request->idcatpr,
+			'CATEGORY_ID' => $request->idcat,
 			'PRODUCT_NAME' => $request->prname,
-			'PRODUCT_PRiCE' => $request->prprice,
+			'PRODUCT_PRICE' => $request->prprice,
 			'PRODUCT_STOCK' => $request->prstock,
 			'EXPLANATION' => $request->prex
 		]);
-		// alihkan halaman ke halaman pegawai
 		return redirect('ProductIndex');
     }
 

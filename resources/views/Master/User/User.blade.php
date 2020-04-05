@@ -34,7 +34,11 @@
 			  <td>{{ $us->EMAIL }}</td>
 			  <td>{{ $us->PHONE }}</td>
 			  <td>{{ $us->PASSWORD }}</td>
-			  <td>{{ $us->JOB_STATUS }}</td>
+			  @if($us->JOB_STATUS == 0)
+					<td><span class="badge badge-success">Active</span></td>
+				@else
+					<td><span class="badge badge-danger">Non-active</span></td>
+				@endif
 			  <td><a href="UserEdit{{ $us->USER_ID }}" class="btn btn-info">Edit</a>
 				  <button type="button" data-toggle="modal" data-target="#myModaldel" class="btn btn-danger">Delete</button>
 		  </tr>

@@ -11,9 +11,9 @@
 	<div class="col-lg-3">
 		<div class="block margin-bottom-sm">
 			<label for="inlineFormInput" class="col-sm-form-control-label">Nota</label>
-				<input id="subtotal-val" type="text" placeholder="NT001" class="mr-sm-3 form-control">
+				<input id="nota" type="text" disabled="" placeholder="NT001" class="mr-sm-3 form-control">
 			<label for="inlineFormInput" class="col-sm-form-control-label">Date</label>
-				<input id="pajak" type="text"  placeholder="03/042020" class="mr-sm-3 form-control">
+				<input id="date" type="date"  class="mr-sm-3 form-control" >
 		</div>
 	</div>
 
@@ -65,8 +65,10 @@
 
 
 	<div class="block margin-bottom-sm">
+	<center>
 	  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Select Product</button>
-	<br>
+	<br><br>
+	</center>
 	<table id="keranjang" width="100%" cellpadding="10px" bordercolorlight="#E8A7A8" border="2"> 
 		<thead>
 			<th width="295">Product Name</th>
@@ -86,7 +88,7 @@
 	<div class="col-lg-8">
 		<div class="block margin-bottom-sm">
 			<label class="col-sm-form-control-label">Sub Total</label>
-			<input id="subtotal-val" type="text" disabled="" placeholder="Rp. 10.000" class="mr-sm-3 form-control">
+			<input id="subtotal-val" type="text" disabled="" placeholder="Rp.0" class="mr-sm-3 form-control">
 			<label class="col-sm-form-control-label">Tax</label>
 			<input id="pajak" type="text" disabled="" placeholder="10%" class="mr-sm-3 form-control">
 			<label class="col-sm-form-control-label">Discount</label>
@@ -97,9 +99,9 @@
 	<div class="col-lg-4">
 		<div class="block margin-bottom-sm">
 			<label class="col-sm-form-control-label">Total</label>
-			<input id="total-val" type="text" disabled="" placeholder="Rp. 10.000" class="mr-sm-3 form-control">
+			<input id="total-val" type="text" disabled="" placeholder="Rp.0" class="mr-sm-3 form-control">
 			<center> <br> 
-			<button type="submit" class="btn btn-info">add payment</button>
+			<button type="submit" class="btn btn-success">add payment</button>
 			<button type="submit" class="btn btn-warning">cancel</button></center> 
 		</div>
 	</div>
@@ -117,7 +119,6 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-         <table>
          	<table width="100%" cellpadding="10px" bordercolorlight="#E8A7A8" border="2"> 
 		<thead>
 			<th width="295">Product ID</th>
@@ -126,22 +127,23 @@
 			<th width="228">Product Price</th>
 			<th width="228">Product Stock</th>
 			<th width="228">Explanation</th>
+			<th width="45">Action</th>
 		</thead>
 		<tbody>
 			@foreach($product as $pr)
-                      <tr onclick="pilihBarang({{ $pr -> PRODUCT_ID }})">
+                      <tr>
                       	  <td>{{ $pr->PRODUCT_ID }}</td>
 						  <td>{{ $pr->CATEGORY_ID }}</td>
 						  <td>{{ $pr->PRODUCT_NAME }}</td>
 						  <td>{{ $pr->PRODUCT_PRICE }}</td>
 						  <td>{{ $pr->PRODUCT_STOCK }}</td>
 						  <td>{{ $pr->EXPLANATION }}</td>
+						  <td><input type="button" onclick="pilihBarang('{{ $pr -> PRODUCT_ID }}')" value="add" class="btn btn-info"></td>
                     </tr>
              @endforeach
 		</tbody>
 	</table>
-         </table>
-        </div>
+ </div>
         
       </div>
     <!-- end of modal content -->                     
@@ -185,7 +187,7 @@
 		var cell5 = row.insertCell(4);
 		console.log(index);
 		cell1.innerHTML = '<input type="hidden" name="name[]" value="'+barang[index]["PRODUCT_NAME"]+'">'+barang[index]["PRODUCT_NAME"];
-		cell2.innerHTML = '<input type="number" name="qty[]" value="1" oninput="recount('+barang[index]["PRODUCT_ID"]+')" id="qty'+barang[index]["PRODUCT_ID"]+'">';		
+		cell2.innerHTML = '<input type="number" name="qty[]" value="1" oninput="recount("'+barang[index]+'["PRODUCT_ID"]'+'")" id="qty'+barang[index]["PRODUCT_ID"]+'">';		
 		cell3.innerHTML = '<input type="hidden" id="harga'+barang[index]["PRODUCT_ID"]+'" name="harga[]" value="'+barang[index]["PRODUCT_PRICE"]+'">'+barang[index]["PRODUCT_PRICE"];
 		cell4.innerHTML = '<input type="hidden" class="subtotal" name="subtotal[]" value="'+barang[index]["PRODUCT_PRICE"]+'" id="subtotal'+barang[index]["PRODUCT_ID"]+'"><span id="subtotalval'+barang[index]["PRODUCT_ID"]+'">'+barang[index]["PRODUCT_PRICE"]+'</span>';
 		cell5.innerHTML = '<button onclick="hapusEl(\''+index+'\')">Del</button>';
@@ -243,6 +245,8 @@
 		document.getElementById(idCol).remove();
 		total();
 	}
+
+	
 </script>
 
 @endsection

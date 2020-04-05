@@ -18,9 +18,21 @@
 		</div>
 	  </div>
 	  <div class="form-group row" >
-		<label class="col-sm-3 form-control-label">Category Id</label>
+		<label class="col-sm-3 form-control-label">Categories</label>
 		<div class="col-sm-9">
-		  <input type="text" class="form-control" name="idcatpr" id="idcatpr" value="{{ $pr->CATEGORY_ID }}">
+		<select id="inlineFormInput" name="idcat" class="form-control mb-3 mb-3">
+				@foreach ($categories as $cat)        
+				@if($cat->CATEGORY_STATUS == 0)           
+                    <option value="{{ $cat->CATEGORY_ID }}">
+						{{ $cat->CATEGORY_NAME }}
+					</option>
+				@else
+					<option value="{{ $cat->CATEGORY_ID }}" disabled>
+						{{ $cat->CATEGORY_NAME }} - Non-Active
+					</option>
+				@endif
+                  @endforeach
+			</select>
 		</div>
 	  </div>
 	  <div class="line"></div>

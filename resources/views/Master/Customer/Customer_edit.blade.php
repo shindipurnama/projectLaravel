@@ -41,7 +41,7 @@
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Email</label>
 		<div class="col-sm-9">
-		  <input type="email" class="form-control" name="emailcus" id="emailcus" value="{{ $cus->PHONE }}">
+		  <input type="email" class="form-control" name="emailcus" id="emailcus" value="{{ $cus->EMAIL }}">
 		</div>
 	  </div>
 	  <div class="form-group row">
@@ -76,9 +76,13 @@
 		<label class="col-sm-3 form-control-label">Status</label>
 		<div class="col-sm-9">
 		  <select name="cuss" class="form-control mb-3 mb-3" > 
-			<option disabled selected>Pilih Status</option>
-			<option  value="0">Active</option>
-			<option  value="1">Non - Active</option>
+		  	@if($cus->CUSTOMER_STATUS == 0)
+				<option selected  value="0">Active</option>
+				<option  value="1">Non - Active</option>
+			@else
+				<option  value="0">Active</option>
+				<option selected  value="1">Non - Active</option>
+			@endif
 		  </select>
 		</div>
 	  </div>

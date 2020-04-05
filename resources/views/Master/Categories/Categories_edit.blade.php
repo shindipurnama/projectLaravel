@@ -14,8 +14,7 @@
 			<div class="form-group row" >
 				<label class="col-sm-3 form-control-label">Category Id</label>
 				<div class="col-sm-9">
-				  <input type="text" class="form-control" name="idcat" id="idcat" 
-						 value="{{ $cat->CATEGORY_ID }}">
+				  <input type="text" class="form-control" name="idcat" id="idcat" value="{{ $cat->CATEGORY_ID }}" requaried>
 				</div>
 			  </div>
 			<div class="form-group row has-danger">
@@ -28,11 +27,15 @@
 			  <div class="form-group row">
 				<label class="col-sm-3 form-control-label">Status</label>
 				<div class="col-sm-9">
-				  <select name="cats" class="form-control mb-3 mb-3" > mb-3" > 
-					<option disabled selected>Pilih Status</option>
-					<option  value="0">Active</option>
+				<select name="cats" class="form-control mb-3 mb-3" > 
+				@if($cat->CATEGORY_STATUS == 0)
+					<option selected  value="0">Active</option>
 					<option  value="1">Non - Active</option>
-				  </select>
+				@else
+					<option  value="0">Active</option>
+					<option selected  value="1">Non - Active</option>
+				@endif
+			</select>
 				</div>
 			  </div>
 			<center><input type="submit" value="Save" class="btn btn-primary"></center>
@@ -48,7 +51,7 @@
 		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
 	  </div>
 	  <div class="modal-body">
-		  <h2>Are You Sure To Add This Data?</h2>
+		  <h3>Are You Sure To Add This Data? i adivse you to change the "Status Category" rather than delete it</h3>
 	  </div>
 	  <div class="modal-footer">
 		<a href="CategoriesUpdate"><button type="submit" class="btn btn-primary">Yes</button></a>

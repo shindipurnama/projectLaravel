@@ -57,7 +57,15 @@
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Job Status</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" name="jsuser" id="jsuser" value="{{ $us->JOB_STATUS }}">
+			<select name="jsuser" class="form-control mb-3 mb-3" > 
+				@if($us->JOB_STATUS == 0)
+					<option selected  value="0">Active</option>
+					<option  value="1">Non - Active</option>
+				@else
+					<option  value="0">Active</option>
+					<option selected  value="1">Non - Active</option>
+				@endif
+			</select>
 		  </div>
 	  </div>
 	  <div class="line"></div>
