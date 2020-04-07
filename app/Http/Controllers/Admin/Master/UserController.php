@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\user;
 
 class UserController extends Controller
 {
@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         //
-		$user = DB::table('user')->get();
+		$user = user::all();
 		return view('Master/User/User',['user'=>$user]);
     }
 
@@ -41,7 +41,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-			DB::table('user')->insert([
+			user::create([
 			'USER_ID' => $request->iduser,
 			'FIRST_NAME' => $request->firstuser,
 			'LAST_NAME' => $request->lastuser,
@@ -73,7 +73,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-		$user = DB::table('user')->where('user_id',$id)->get();
+		$user = user::where('user_id',$id)->get();
 		return view('Master/User/User_edit',['user' => $user]);
     }
 
@@ -87,7 +87,7 @@ class UserController extends Controller
     public function update(Request $request)
     {
         //
-		DB::table('user')->where('USER_ID',$request->idus)->update([
+		$user = user::where('user_id',$request->idus)->update([
 			'FIRST_NAME' => $request->firstuser,
 			'LAST_NAME' => $request->lastuser,
 			'PHONE' => $request->phoneuser,
@@ -108,7 +108,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-		DB::table('user')->where('user_id',$id)->delete();
+		$user = user::where('user_id',$id)->delete();
 		return redirect('UserIndex');
     }
     

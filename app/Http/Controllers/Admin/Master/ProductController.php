@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin\Master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\product;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-		$product = DB::table('product')->get();
+		$product = product::all();
 		return view('Master/Product/Product',['product'=>$product]);
     }
 
@@ -43,7 +44,7 @@ class ProductController extends Controller
     {
         //
 			DB::table('categories')->get();
-			DB::table('product')->insert([
+			product::create([
 			'PRODUCT_ID' => $request->idpr,
 			'CATEGORY_ID' => $request->idcat,
 			'PRODUCT_NAME' => $request->prname,
@@ -75,7 +76,7 @@ class ProductController extends Controller
     {
         //
         $categories=DB::table('categories')->get();
-		$product = DB::table('product')->where('product_id',$id)->get();
+		$product = product::where('product_id',$id)->get();
 		return view('Master/Product/Product_edit',['product' => $product, 'categories'=>$categories]);
     }
 
@@ -90,7 +91,7 @@ class ProductController extends Controller
     {
         //
         DB::table('categories')->get();
-		DB::table('product')->where('PRODUCT_ID',$request->idpr)->update([
+		product::where('PRODUCT_ID',$request->idpr)->update([
 			'CATEGORY_ID' => $request->idcat,
 			'PRODUCT_NAME' => $request->prname,
 			'PRODUCT_PRICE' => $request->prprice,
@@ -109,7 +110,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
-		DB::table('product')->where('product_id',$id)->delete();
+		$product=product::where('product_id',$id)->delete();
 		return redirect('ProductIndex');
     }
 }

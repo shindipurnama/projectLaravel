@@ -8,41 +8,40 @@
 <div class="col-lg-12">
 	<div class="block margin-bottom-sm">
 	 <div class="title"><strong>Please Fill The BOX</strong></div>
-		@foreach ($user as $us)
 	<form class="form-horizontal" action="UserUpdate" method="post">
-		{{ @csrf_field() }}
+		<input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
 	  <div class="form-group row" action="CategoriesStore" method="post">
 		<label class="col-sm-3 form-control-label">User Id</label>
 		<div class="col-sm-9">
-		  <input type="text" value="{{ $us->USER_ID }}" class="form-control" name="idus" id="idus">
+		  <input type="text" value="{{ $user[0]->USER_ID }}" class="form-control" name="idus" id="idus">
 		</div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">First Name</label>
 		<div class="col-sm-9">
-		  <input type="text" class="form-control" name="firstuser" id="firstuser" value="{{ $us->FIRST_NAME }}">
+		  <input type="text" class="form-control" name="firstuser" id="firstuser" value="{{ $user[0]->FIRST_NAME }}">
 		</div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Last Name</label>
 			<div class="col-sm-9">
-		 	 <input type="text" class="form-control" name="lastuser" id="lastuser" value="{{ $us->LAST_NAME }}">
+		 	 <input type="text" class="form-control" name="lastuser" id="lastuser" value="{{ $user[0]->LAST_NAME }}">
 			</div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
 	 	<label class="col-sm-3 form-control-label">Phone</label>
 	  	<div class="col-sm-9">
-			<input type="text" class="form-control" name="phoneuser" id="phoneuser" value="{{ $us->PHONE }}"><small class="help-block-none">Input with number</small>
+			<input type="text" class="form-control" name="phoneuser" id="phoneuser" value="{{ $user[0]->PHONE }}"><small class="help-block-none">Input with number</small>
 	 	 </div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Email</label>
 		<div class="col-sm-9">
-		  <input type="email" class="form-control" name="emailuser" id="emailuser" value="{{ $us->EMAIL }}">
+		  <input type="email" class="form-control" name="emailuser" id="emailuser" value="{{ $user[0]->EMAIL }}">
 		</div>
 	  </div>
 	  <div class="line"></div>
@@ -50,7 +49,7 @@
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Password</label>
 		<div class="col-sm-9">
-		  <input type="password" class="form-control" name="passuser" id="passuser" value="{{ $us->PASSWORD }}">
+		  <input type="password" class="form-control" name="passuser" id="passuser" value="{{ $user[0]->PASSWORD }}">
 		</div>
 	  </div>
 	  <div class="line"></div>
@@ -58,7 +57,7 @@
 		<label class="col-sm-3 form-control-label">Job Status</label>
 		<div class="col-sm-9">
 			<select name="jsuser" class="form-control mb-3 mb-3" > 
-				@if($us->JOB_STATUS == 0)
+				@if($user[0]->JOB_STATUS == 0)
 					<option selected  value="0">Active</option>
 					<option  value="1">Non - Active</option>
 				@else
@@ -72,7 +71,6 @@
 			 
 	<center><input type="submit"  value="Save" class="btn btn-primary"></td></center>
 	</form>
-	@endforeach
 </div>
 </div>
 <!-- Modal-->

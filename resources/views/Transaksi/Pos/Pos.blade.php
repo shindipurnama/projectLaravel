@@ -47,7 +47,7 @@
 		<div class="col-lg-4">
 			<div class="block margin-bottom-sm">
 				<label class="col-sm-form-control-label">Category ID</label>
-				<input for="inlineFormInput" id="total-val" type="text" disabled="" placeholder="AUTO" class="mr-sm-1 form-control">
+				<input for="inlineFormInput" type="text" disabled="" placeholder="AUTO" class="mr-sm-1 form-control">
 				<label for="inlineFormInput" class="col-sm-form-control-label">Category Name</label>
 					<select id="inlineFormInput" name="idcat" class="form-control mb-0 mb-0">
 					<option disabled selected>Pilih Category</option>
@@ -99,7 +99,7 @@
 	<div class="col-lg-4">
 		<div class="block margin-bottom-sm">
 			<label class="col-sm-form-control-label">Total</label>
-			<input id="total-val" type="text" disabled="" placeholder="Rp.0" class="mr-sm-3 form-control">
+			<input id="total-val" type="text" placeholder="Rp.0" class="mr-sm-3 form-control">
 			<center> <br> 
 			<button type="submit" class="btn btn-success">add payment</button>
 			<button type="submit" class="btn btn-warning">cancel</button></center> 
@@ -187,10 +187,10 @@
 		var cell5 = row.insertCell(4);
 		console.log(index);
 		cell1.innerHTML = '<input type="hidden" name="name[]" value="'+barang[index]["PRODUCT_NAME"]+'">'+barang[index]["PRODUCT_NAME"];
-		cell2.innerHTML = '<input type="number" name="qty[]" value="1" oninput="recount("'+barang[index]+'["PRODUCT_ID"]'+'")" id="qty'+barang[index]["PRODUCT_ID"]+'">';		
+		cell2.innerHTML = '<input type="number" name="qty[]" value="1" oninput="recount(\''+barang[index]["PRODUCT_ID"]+'\')" id="qty'+barang[index]["PRODUCT_ID"]+'">';		
 		cell3.innerHTML = '<input type="hidden" id="harga'+barang[index]["PRODUCT_ID"]+'" name="harga[]" value="'+barang[index]["PRODUCT_PRICE"]+'">'+barang[index]["PRODUCT_PRICE"];
 		cell4.innerHTML = '<input type="hidden" class="subtotal" name="subtotal[]" value="'+barang[index]["PRODUCT_PRICE"]+'" id="subtotal'+barang[index]["PRODUCT_ID"]+'"><span id="subtotalval'+barang[index]["PRODUCT_ID"]+'">'+barang[index]["PRODUCT_PRICE"]+'</span>';
-		cell5.innerHTML = '<button onclick="hapusEl(\''+index+'\')">Del</button>';
+		cell5.innerHTML = '<button onclick="hapusEl(\''+id+'\')">Del</button>';
 
 		total();
 		

@@ -72,11 +72,13 @@
 		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
 	  </div>
 	  <div class="modal-body">
-		  <h4>Are You Sure To Add This Data?</h4> <br> </h5>I adivse you to change the "Status Customer" rather than delete it</h5>
-	  </div>
-	  <div class="modal-footer">
+	  	h4>Are You Sure To Add This Data?</h4> <br> </h5>I adivse you to change the "Customer Status" rather than delete it</h5>
+	  	</div>
+	  <div class="modal-footer" >
+	  	<center>
 		<a href="CustomerDestroy/{{ $cus->CUSTOMER_ID }}"><button type="submit" class="btn btn-danger">Yes</button></a>
-		<button type="button" data-dismiss="modal" class="btn btn-info">no</button>
+		<a href="CustomerEdit{{ $cus->CUSTOMER_ID }}" class="btn btn-success" >Change Status</a>
+		<button type="button" data-dismiss="modal" class="btn btn-info">No</button></center>
 	  </div>
 	</div>
   </div>

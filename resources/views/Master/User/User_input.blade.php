@@ -9,7 +9,7 @@
 	<div class="block margin-bottom-sm">
 	 <div class="title"><strong>Please Fill The BOX</strong></div>
 	<form class="form-horizontal" action="UserStore" method="post">
-		{{ @csrf_field() }}
+		<input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">User Id</label>
 		<div class="col-sm-9">
@@ -45,11 +45,18 @@
 		</div>
 	  </div>
 	  <div class="line"></div>
-	  <div class="line"></div>
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Password</label>
 		<div class="col-sm-9">
 		  <input type="password" placeholder="Password" class="form-control" name="passuser" id="passuser">
+		</div>
+	  </div>
+	  <div class="line"></div>
+	  <div class="form-group row">
+		<label class="col-sm-3 form-control-label">Confirm Password</label>
+		<div class="col-sm-9">
+		  <input type="password" placeholder="Confirm Password" class="form-control" name="passuser" id="copass" onkeyup="cekPass()">
+			<p id="eror" style="color:red"></p>		  
 		</div>
 	  </div>
 	  <div class="line"></div>
@@ -64,11 +71,11 @@
 		  </div>
 	  </div>
 	  <div class="line"></div>
-			 
-	<center><input type="submit"  value="add" class="btn btn-primary"></td></center>
+	<center><input type="submit" value="add" class="btn btn-primary"></td></center>
 	</form>
 </div>
 </div>
+
 <!-- Modal-->
 <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
   <div role="document" class="modal-dialog modal-sm">
@@ -86,4 +93,24 @@
 	</div>
   </div>
 </div>
+
+<script>
+	function cekPass()
+	{
+		var pass = document.getElementById('passuser').value;
+		var copass = document.getElementById('copass').value;
+		var text = document.getElementById('eror');
+		if(pass != copass)
+		{
+			text.style.color='red';
+			text.innerHTML='Password is not Correct';
+		}
+		else
+		{
+			text.style.color = 'green';
+			text.innerHTML = 'Password is Correct';
+		}	
+	}
+</script>
+
 @endsection
