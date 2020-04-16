@@ -32,6 +32,13 @@
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
+		<label class="col-sm-3 form-control-label">Username</label>
+			<div class="col-sm-9">
+		 	 <input type="text" class="form-control" name="username" id="username">
+			</div>
+	  </div>
+	  <div class="line"></div>
+	  <div class="form-group row">
 	 	<label class="col-sm-3 form-control-label">Phone</label>
 	  	<div class="col-sm-9">
 			<input type="text" class="form-control" name="phoneuser" id="phoneuser"><small class="help-block-none">Input with number</small>

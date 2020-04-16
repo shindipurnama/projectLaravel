@@ -45,18 +45,36 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <form class="text-left form-validate">
+                  <form class="text-left form-validate" action="RegisterStore" method="post">
+                  <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                     <div class="form-group-material">
-                      <input id="register-username" type="text" name="registerUsername" required data-msg="Please enter your username" class="input-material">
+                      <input id="register-firstname" type="text" name="firstuser" required data-msg="Please enter your first name" class="input-material">
+                      <label for="register-firstname" class="label-material">First Name</label>
+                    </div>
+                    <div class="form-group-material">
+                      <input id="register-lastname" type="text" name="lastuser" required data-msg="Please enter your last name" class="input-material">
+                      <label for="register-lastname" class="label-material">Last Name</label>
+                    </div>
+                    <div class="form-group-material">
+                      <input id="register-username" type="text" name="username" required data-msg="Please enter your username" class="input-material">
                       <label for="register-username" class="label-material">Username</label>
                     </div>
                     <div class="form-group-material">
-                      <input id="register-email" type="email" name="registerEmail" required data-msg="Please enter a valid email address" class="input-material">
-                      <label for="register-email" class="label-material">Email Address      </label>
+                      <input id="register-phone" type="text" name="phoneuser" required data-msg="Please enter a valid email address" class="input-material">
+                      <label for="register-email" class="label-material">Phone</label>
                     </div>
                     <div class="form-group-material">
-                      <input id="register-password" type="password" name="registerPassword" required data-msg="Please enter your password" class="input-material">
-                      <label for="register-password" class="label-material">Password        </label>
+                      <input id="register-email" type="email" name="emailuser" required data-msg="Please enter a valid email address" class="input-material">
+                      <label for="register-email" class="label-material">Email Address</label>
+                    </div>
+                    <div class="form-group-material">
+                      <input id="passuser" type="password" name="passuser" required data-msg="Please enter your password" class="input-material">
+                      <label for="register-password" class="label-material">Password</label>
+                    </div>
+                    <div class="form-group-material">
+                      <input id="copass" type="password" name="passuser" required data-msg="Please rewrite your password" class="input-material" onkeyup="cekPass()">
+                      <label for="register-password" class="label-material">Password</label>
+                      <p id="eror" style="color:red"></p>	
                     </div>
                     <div class="form-group terms-conditions text-center">
                       <input id="register-agree" name="registerAgree" type="checkbox" required value="1" data-msg="Your agreement is required" class="checkbox-template">
@@ -86,4 +104,22 @@
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="js/front.js"></script>
   </body>
+  <script>
+	function cekPass()
+	{
+		var pass = document.getElementById('passuser').value;
+		var copass = document.getElementById('copass').value;
+		var text = document.getElementById('eror');
+		if(pass != copass)
+		{
+			text.style.color='red';
+			text.innerHTML='Password is not Correct';
+		}
+		else
+		{
+			text.style.color = 'green';
+			text.innerHTML = 'Password is Correct';
+		}	
+	}
+</script>
 </html>

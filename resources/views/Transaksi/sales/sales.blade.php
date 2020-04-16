@@ -24,9 +24,21 @@
 		</thead>
 		<tbody>
 			<tr>
+			@php $no = 1; @endphp
+		  	@foreach ($sales as $sls)
+			<tr>
+			  <td>{{ $no++ }}</td>
+			  <td>{{ $sls->NOTA_ID }}</td>
+			  <td>{{ $sls->CUSTOMER_ID }}</td>
+			  <td>{{ $sls->USER_ID }}</td>
+			  <td>{{ $sls->NOTA_DATE }}</td>
+			  <td>{{ $sls->TOTAL_PAYMENT }}</td>
+			  <td><input type="submit" value="DETAIL" data-toggle="modal" data-target="#myModal" class="btn btn-danger"></td>
 			</tr>
+			@endforeach
 		</tbody>
 		</table>
+		<center><a href="SalesDetail"><input type="submit" value="Details of Sales Recap" class="btn btn-primary"></a></center>
 				  </div>
 				  </div>
 				  </div>
@@ -40,9 +52,10 @@
 		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
 	  </div>
 	  <div class="modal-body">
+	  
 		  <div class="table-responsive"> 
 			<div class="form-group">  
-				<table class="table table-striped">
+			<table class="table table-striped">
 			  <thead>
 				<tr>
 				  <th></th>
@@ -56,7 +69,18 @@
 			</thead>
 			<tbody>
 			<tr>
-			</tr>
+				@php $no = 1; @endphp
+				@foreach ($sales_detail as $sd)
+				<tr>
+				<td>{{ $no++ }}</td>
+				<td>{{ $sd->NOTA_ID }}</td>
+				<td>{{ $sd->PRODUCT_ID }}</td>
+				<td>{{ $sd->QUANTITY }}</td>
+				<td>{{ $sd->SELLING_PRICE }}</td>
+				<td>{{ $sd->DISCOUNT }}</td>
+				<td>{{ $sd->TOTAL_PRICE }}</td>
+				</tr>
+				@endforeach
 			</tbody>
 			</table>
 		 </div>

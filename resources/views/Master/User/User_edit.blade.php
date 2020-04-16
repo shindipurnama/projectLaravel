@@ -32,6 +32,13 @@
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
+		<label class="col-sm-3 form-control-label">Username</label>
+			<div class="col-sm-9">
+		 	 <input type="text" class="form-control" name="username" id="username" value="{{ $user[0]->USERNAME }}">
+			</div>
+	  </div>
+	  <div class="line"></div>
+	  <div class="form-group row">
 	 	<label class="col-sm-3 form-control-label">Phone</label>
 	  	<div class="col-sm-9">
 			<input type="text" class="form-control" name="phoneuser" id="phoneuser" value="{{ $user[0]->PHONE }}"><small class="help-block-none">Input with number</small>
@@ -50,6 +57,14 @@
 		<label class="col-sm-3 form-control-label">Password</label>
 		<div class="col-sm-9">
 		  <input type="password" class="form-control" name="passuser" id="passuser" value="{{ $user[0]->PASSWORD }}">
+		</div>
+	  </div>
+	  <div class="line"></div>
+	  <div class="form-group row">
+		<label class="col-sm-3 form-control-label">Confirm Password</label>
+		<div class="col-sm-9">
+		  <input type="password" placeholder="Confirm Password" class="form-control" name="passuser" id="copass" onkeyup="cekPass()">
+			<p id="eror" style="color:red"></p>		  
 		</div>
 	  </div>
 	  <div class="line"></div>
@@ -90,4 +105,23 @@
 	</div>
   </div>
 </div>
+
+<script>
+	function cekPass()
+	{
+		var pass = document.getElementById('passuser').value;
+		var copass = document.getElementById('copass').value;
+		var text = document.getElementById('eror');
+		if(pass != copass)
+		{
+			text.style.color='red';
+			text.innerHTML='Password is not Correct';
+		}
+		else
+		{
+			text.style.color = 'green';
+			text.innerHTML = 'Password is Correct';
+		}	
+	}
+</script>
 @endsection

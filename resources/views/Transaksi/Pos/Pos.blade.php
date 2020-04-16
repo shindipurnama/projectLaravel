@@ -7,13 +7,15 @@
 @section('konten')
 
 `<div class="col-lg-12">
+<form class="form-horizontal" action="PosStore" method="post">
+			{{ @csrf_field() }}
 <div class="row">
 	<div class="col-lg-3">
 		<div class="block margin-bottom-sm">
 			<label for="inlineFormInput" class="col-sm-form-control-label">Nota</label>
-				<input id="nota" type="text" disabled="" placeholder="NT001" class="mr-sm-3 form-control">
+				<input name="notaid" id="notaid" type="text" disabled="" placeholder="AUTO" class="mr-sm-3 form-control">
 			<label for="inlineFormInput" class="col-sm-form-control-label">Date</label>
-				<input id="date" type="date"  class="mr-sm-3 form-control" >
+				<input name='date' id="date" type="date"  class="mr-sm-3 form-control" >
 		</div>
 	</div>
 
@@ -25,7 +27,7 @@
 					@foreach ($user as $us)                   
 						<option value="{{ $us->USER_ID }}">
 							@if($us->JOB_STATUS == 0)
-									{{ $us->FIRST_NAME }}
+									{{ $us->FIRST_NAME }} {{ $us->LAST_NAME }}
 								@endif
 						</option>
 						@endforeach
@@ -36,7 +38,7 @@
 					@foreach ($customer as $cus)                   
 						<option value="{{ $cus->CUSTOMER_ID }}">
 							@if($cus->CUSTOMER_STATUS == 0)
-									{{ $cus->FIRST_NAME }}
+									{{ $cus->FIRST_NAME }} {{ $cus->LAST_NAME }}
 								@endif
 						</option>
 						@endforeach
@@ -66,7 +68,7 @@
 
 	<div class="block margin-bottom-sm">
 	<center>
-	  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Select Product</button>
+	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Select Product</button>
 	<br><br>
 	</center>
 	<table id="keranjang" width="100%" cellpadding="10px" bordercolorlight="#E8A7A8" border="2"> 
@@ -74,6 +76,7 @@
 			<th width="295">Product Name</th>
 			<th width="45">Qty</th>
 			<th width="212">Price</th>
+			<th width="45">Discount</th>
 			<th width="228">Sub Total</th>
 			<th width="43"> Action</th>
 		</thead>
@@ -99,13 +102,14 @@
 	<div class="col-lg-4">
 		<div class="block margin-bottom-sm">
 			<label class="col-sm-form-control-label">Total</label>
-			<input id="total-val" type="text" placeholder="Rp.0" class="mr-sm-3 form-control">
+			<input id="total-val" name="total" type="text" placeholder="Rp.0" class="mr-sm-3 form-control">
 			<center> <br> 
 			<button type="submit" class="btn btn-success">add payment</button>
-			<button type="submit" class="btn btn-warning">cancel</button></center> 
+			<button type="reset" class="btn btn-warning">cancel</button></center> 
 		</div>
 	</div>
 </div>
+</form>
 </div>
 
 <!-- Modal -->
@@ -185,12 +189,14 @@
 		var cell3 = row.insertCell(2);
 		var cell4 = row.insertCell(3);
 		var cell5 = row.insertCell(4);
+		var cell6 = row.insertCell(5);
 		console.log(index);
-		cell1.innerHTML = '<input type="hidden" name="name[]" value="'+barang[index]["PRODUCT_NAME"]+'">'+barang[index]["PRODUCT_NAME"];
-		cell2.innerHTML = '<input type="number" name="qty[]" value="1" oninput="recount(\''+barang[index]["PRODUCT_ID"]+'\')" id="qty'+barang[index]["PRODUCT_ID"]+'">';		
-		cell3.innerHTML = '<input type="hidden" id="harga'+barang[index]["PRODUCT_ID"]+'" name="harga[]" value="'+barang[index]["PRODUCT_PRICE"]+'">'+barang[index]["PRODUCT_PRICE"];
-		cell4.innerHTML = '<input type="hidden" class="subtotal" name="subtotal[]" value="'+barang[index]["PRODUCT_PRICE"]+'" id="subtotal'+barang[index]["PRODUCT_ID"]+'"><span id="subtotalval'+barang[index]["PRODUCT_ID"]+'">'+barang[index]["PRODUCT_PRICE"]+'</span>';
-		cell5.innerHTML = '<button onclick="hapusEl(\''+id+'\')">Del</button>';
+		cell1.innerHTML = '<input type="hidden" name="name['+barang[index]["PRODUCT_ID"]+']" value="'+barang[index]["PRODUCT_NAME"]+'">'+barang[index]["PRODUCT_NAME"];
+		cell2.innerHTML = '<input type="number" name="qty['+barang[index]["PRODUCT_ID"]+']" value="1" oninput="recount(\''+barang[index]["PRODUCT_ID"]+'\')" id="qty'+barang[index]["PRODUCT_ID"]+'">';		
+		cell3.innerHTML = '<input type="hidden" id="harga'+barang[index]["PRODUCT_ID"]+'" name="harga['+barang[index]["Product_ID"]+']" value="'+barang[index]["PRODUCT_PRICE"]+'">'+barang[index]["PRODUCT_PRICE"];
+		cell4.innerHTML = '<input class="discount" type="number" name="discount['+barang[index]["PRODUCT_ID"]+']" value="0" oninput="recount(\''+barang[index]["PRODUCT_ID"]+'\')" id="discount'+barang[index]["PRODUCT_ID"]+'">';	
+		cell5.innerHTML = '<input type="hidden" class="subtotal" name="subtotal['+barang[index]["PRODUCT_ID"]+']" value="'+barang[index]["PRODUCT_PRICE"]+'" id="subtotal'+barang[index]["PRODUCT_ID"]+'"><span id="subtotalval'+barang[index]["PRODUCT_ID"]+'">'+barang[index]["PRODUCT_PRICE"]+'</span>';
+		cell6.innerHTML = '<button onclick="hapusEl(\''+id+'\')">Del</button>';
 
 		total();
 		
@@ -230,8 +236,9 @@
 
 		var price = document.getElementById("harga"+id).value;
 		var sembarang = document.getElementById("qty"+id).value;
+		var discount = document.getElementById("discount"+id).value;
 
-		var lego = Number(price*sembarang); 
+		var lego = Number(price*sembarang)-discount; 
 		document.getElementById("subtotal"+id).value = lego;
 		document.getElementById("subtotalval"+id).innerHTML = lego;
 		total();

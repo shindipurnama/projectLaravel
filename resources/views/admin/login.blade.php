@@ -45,17 +45,19 @@
             <div class="col-lg-6">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <form method="get" class="form-validate mb-4">
+                  <form class="form-validate mb-4" action="proses" method="post">
+                  <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                     <div class="form-group">
-                      <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
-                      <label for="login-username" class="label-material">User Name</label>
+                      <input type="text" name="EMAIL" required data-msg="Please enter your username" class="input-material">
+                      <label class="label-material">Email</label>
                     </div>
                     <div class="form-group">
-                      <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
-                      <label for="login-password" class="label-material">Password</label>
+                      <input type="password" name="PASSWORD" required data-msg="Please enter your password" class="input-material">
+                      <label class="label-material">Password</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
-                  </form><a href="#" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="register" class="signup">Signup</a>
+                  </form>
+                  <a href="#" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="register" class="signup">Signup</a>
                 </div>
               </div>
             </div>

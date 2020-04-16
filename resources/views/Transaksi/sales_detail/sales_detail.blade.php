@@ -22,26 +22,21 @@
 		  </tr>
 		</thead>
 		<tbody>
-		<tr>
-		  <td>1</td>
-		  <td>NT001</td>
-		  <td>PR001</td>
-		  <td>2</td>
-		  <td>Rp. 10.000</td>
-		  <td>10%</td>
-		  <td>Rp. 18.000</td>
-		</tr>
-		<tr>
-		  <td>2</td>
-		  <td>NT002</td>
-		  <td>PR002</td>
-		  <td>1</td>
-		  <td>Rp. 22.000</td>
-		  <td>0%</td>
-		  <td>Rp. 22.000</td>
-		</tr>
+				@php $no = 1; @endphp
+				@foreach ($sales_detail as $sd)
+				<tr>
+				<td>{{ $no++ }}</td>
+				<td>{{ $sd->NOTA_ID }}</td>
+				<td>{{ $sd->PRODUCT_ID }}</td>
+				<td>{{ $sd->QUANTITY }}</td>
+				<td>{{ $sd->SELLING_PRICE }}</td>
+				<td>{{ $sd->DISCOUNT }}</td>
+				<td>{{ $sd->TOTAL_PRICE }}</td>
+				</tr>
+				@endforeach
 		</tbody>
 		</table>
+		<center><a href="SalesIndex"><input type="submit" value="Sales" class="btn btn-primary"></a></center>
 	 </div>
      </div>
 	 </div>

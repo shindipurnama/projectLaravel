@@ -15,7 +15,8 @@
 				  <th>#</th>
 				  <th>User Id</th>
 				  <th>First Name</th>
-				  <th>Last Name</th>                                   
+				  <th>Last Name</th>
+				  <th>UserName</th>                                   
 				  <th>Email</th>                        
 				  <th>Phone</th>
 				  <th>Password</th>
@@ -30,6 +31,7 @@
 			  <td>{{ $no++ }}</td>
 			  <td>{{ $us->USER_ID }}</td>
 			  <td>{{ $us->FIRST_NAME }}</td>
+			  <td>{{ $us->LAST_NAME }}</td>
 			  <td>{{ $us->LAST_NAME }}</td>
 			  <td>{{ $us->EMAIL }}</td>
 			  <td>{{ $us->PHONE }}</td>

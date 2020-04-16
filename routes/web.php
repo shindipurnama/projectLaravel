@@ -13,29 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('index','Admin\AdminController@index_admin');
 
 Route::get('login','Admin\LoginController@index');
-Route::get('login{username}','Admin\LoginController@proses');
+Route::post('proses','Admin\LoginController@proses');
 
 Route::get('register','Admin\RegisterController@index');
+Route::post('RegisterStore','Admin\RegisterController@store');
 
+Route::get('SalesDetail','Admin\Transaksi\SalesController@Index2');
 Route::get('SalesIndex','Admin\Transaksi\SalesController@Index');
-Route::get('SalesCreate','Admin\Transaksi\SalesController@create');
-Route::get('SalesEdit','Admin\Transaksi\SalesController@edit');
-Route::get('SalesDestroy','Admin\Transaksi\SalesController@destroy');
-
-Route::get('SalesDetailIndex','Admin\Transaksi\Sales_DetailController@Index');
-Route::get('SalesDetailCreate','Admin\Transaksi\Sales_DetailController@create');
-Route::get('SalesDetailEdit','Admin\Transaksi\Sales_DetailController@edit');
-Route::get('SalesDetailDestroy','Admin\Transaksi\Sales_DetailController@destroy');
-
 Route::get('PosIndex','Admin\Transaksi\PosController@Index');
-Route::get('PosIndex','Admin\Transaksi\PosController@Create');
+Route::get('PosIndex','Admin\Transaksi\PosController@create');
+Route::post('PosStore','Admin\Transaksi\PosController@store');
 
 Route::get('CategoriesIndex','Admin\Master\CategoriesController@index');
 Route::get('CategoriesCreate','Admin\Master\CategoriesController@create');

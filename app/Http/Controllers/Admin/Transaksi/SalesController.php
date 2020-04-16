@@ -15,9 +15,26 @@ class SalesController extends Controller
      */
     public function Index()
     {
-        //
-		$sales = DB::table('sales')->get();
-		return view('Transaksi/sales/sales',['sales'=>$sales]);
+        //tampilan tabel sales
+        $user=DB::table('user')->get();
+		$customer=DB::table('customer')->get();
+		$categories=DB::table('categories')->get();
+		$product=DB::table('product')->get();
+        $sales = DB::table('sales')->get();
+        $sales_detail = DB::table('sales_detail')->get();
+		return view('Transaksi/sales/sales',['sales'=>$sales, 'sales_detail'=>$sales_detail]);
+    }
+
+    public function Index2()
+    {
+        //tampilan tabel detail sales
+        $user=DB::table('user')->get();
+		$customer=DB::table('customer')->get();
+		$categories=DB::table('categories')->get();
+		$product=DB::table('product')->get();
+        $sales = DB::table('sales')->get();
+        $sales_detail = DB::table('sales_detail')->get();
+		return view('Transaksi/sales_detail/sales_detail',['sales'=>$sales, 'sales_detail'=>$sales_detail]);
     }
 
     /**
@@ -28,7 +45,6 @@ class SalesController extends Controller
     public function create()
     {
         //
-		return view('Transaksi/sales/salesCreate');
     }
 
     /**
