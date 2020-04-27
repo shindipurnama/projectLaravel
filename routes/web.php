@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('index','Admin\AdminController@index_admin');
 
+Route::get('/','Admin\LoginController@index');
 Route::get('login','Admin\LoginController@index');
 Route::post('proses','Admin\LoginController@proses');
 
@@ -25,6 +26,7 @@ Route::post('RegisterStore','Admin\RegisterController@store');
 
 Route::get('SalesDetail','Admin\Transaksi\SalesController@Index2');
 Route::get('SalesIndex','Admin\Transaksi\SalesController@Index');
+Route::get('SalesDetailView','Admin\Transaksi\PosController@show');
 Route::get('PosIndex','Admin\Transaksi\PosController@Index');
 Route::get('PosIndex','Admin\Transaksi\PosController@create');
 Route::post('PosStore','Admin\Transaksi\PosController@store');

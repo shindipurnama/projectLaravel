@@ -33,8 +33,9 @@
 			  <td>{{ $sls->USER_ID }}</td>
 			  <td>{{ $sls->NOTA_DATE }}</td>
 			  <td>{{ $sls->TOTAL_PAYMENT }}</td>
-			  <td><input type="submit" value="DETAIL" data-toggle="modal" data-target="#myModal" class="btn btn-danger"></td>
+			  <td><input type="submit" value="DETAIL" data-toggle="modal" data-target="#myModal{{ $sls->NOTA_ID }}" class="btn btn-danger"></td>
 			</tr>
+			
 			@endforeach
 		</tbody>
 		</table>
@@ -44,294 +45,92 @@
 				  </div>
 	 </div>
 </div>
-<!-- Modal detail SALES 1-->
-<div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-  <div role="document" class="modal-dialog modal-xl">
-	<div class="modal-content" >
-	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Detail View</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-	  </div>
-	  <div class="modal-body">
-	  
-		  <div class="table-responsive"> 
-			<div class="form-group">  
-			<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th></th>
-				  <th>Nota Id</th>
-				  <th>Product Id</th>                                   
-				  <th>Quality</th>                        
-				  <th>Selling Price</th>
-				  <th>Discount</th>
-				  <th>Total Price</th>
-			  </tr>
-			</thead>
-			<tbody>
-			<tr>
-				@php $no = 1; @endphp
-				@foreach ($sales_detail as $sd)
-				<tr>
-				<td>{{ $no++ }}</td>
-				<td>{{ $sd->NOTA_ID }}</td>
-				<td>{{ $sd->PRODUCT_ID }}</td>
-				<td>{{ $sd->QUANTITY }}</td>
-				<td>{{ $sd->SELLING_PRICE }}</td>
-				<td>{{ $sd->DISCOUNT }}</td>
-				<td>{{ $sd->TOTAL_PRICE }}</td>
-				</tr>
+			<!-- Modal detail SALES 1-->
+			@foreach($sales as $sls)
+			<div id="myModal{{ $sls->NOTA_ID }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+				<div role="document" class="modal-dialog modal-xl">
+					<div class="modal-content" >
+					<div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Detail View</strong>
+						<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+					</div>
+					<div class="modal-body">
+					
+					@if( ($sls->NOTA_ID)  ==  ($sls->NOTA_ID) )
+					<duv class="form-inline">
+					<div class="col-md-3 col-sm-6">
+					@foreach($user as $us)
+						@if (($sls->USER_ID) == ($us->USER_ID))
+							<div class="icon-user-1"><strong>User</strong></div>
+							<input type="text" disabled="" value="{{ $us->FIRST_NAME }} {{ $us->LAST_NAME }}" class="form-control">
+						@endif
+					@endforeach
+					</div>
+
+					<div class="col-md-3 col-sm-6">
+					@foreach($customer as $cus)
+						@if (($sls->CUSTOMER_ID) == ($cus->CUSTOMER_ID))
+							<div class="icon-user-1"><strong>Customer</strong></div>
+							<input type="text" disabled="" value="{{ $cus->FIRST_NAME }} {{ $cus->LAST_NAME }}" class="form-control">
+						@endif
+					@endforeach
+					</div>
+
+					<div class="col-md-3 col-sm-6">
+							<div class="icon-new-file"><strong>Date</strong></div>
+							<input type="text" disabled="" value="{{ $sls->NOTA_DATE }}" class="form-control">
+					</div>
+
+					<div class="col-md-3 col-sm-6">
+							<div class="icon-windows"><strong>Date</strong></div>
+							<input type="text" disabled="" value="{{ $sls->TOTAL_PAYMENT }}" class="form-control">
+					</div>
+					</div>
+						<div class="table-responsive"> 
+							<div class="form-group">  
+							<table class="table table-striped" id="keranjang" width="100%">
+							<thead>
+								<tr>
+								<th></th>
+								<th>Nota Id</th>
+								<th>Product Name</th>                                   
+								<th>Quantity</th>      
+								<th>Discount</th>
+								<th>Selling Price</th>
+								<th>Total Price</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								@php $no = 1; @endphp
+								@foreach($sales_detail as $salesdetail)
+								@foreach($product as $pr)
+									<tr id="col{{ $loop->iteration }}">
+									@if (($sls->NOTA_ID) == ($salesdetail->NOTA_ID) && (($salesdetail->PRODUCT_ID) == ($pr->PRODUCT_ID)) )
+										<td>{{ $no++ }}</td>
+										<td>{{ $salesdetail->NOTA_ID }} </td>  
+										<td>{{ $pr->PRODUCT_NAME }}</td>    
+										<td>{{ $salesdetail->QUANTITY }}</td>
+										<td>{{ $salesdetail->DISCOUNT }}</td>
+										<td>{{ $salesdetail->SELLING_PRICE }}</td>
+										<td>{{ $salesdetail->TOTAL_PRICE }}</td>
+									@endif
+									</tr>
+									@endforeach
+									@endforeach
+								
+							</tbody>
+							</table>
+						</div>
+						</div>
+					</div>
+					@endif
+					<div class="modal-footer">
+						<button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+					</div>
+					</div>
+				</div>
+				</div>
 				@endforeach
-			</tbody>
-			</table>
-		 </div>
-		 </div>
-	  </div>
-	  <div class="modal-footer">
-		<button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-	  </div>
-	</div>
-  </div>
-</div>
-		
-<!-- Modal detail SALES 2-->
-<div id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-  <div role="document" class="modal-dialog modal-xl">
-	<div class="modal-content" >
-	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Detail View</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-	  </div>
-	  <div class="modal-body">
-		  <div class="table-responsive"> 
-			<div class="form-group">  
-				<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th></th>
-				  <th>Nota Id</th>
-				  <th>Product Id</th>                                   
-				  <th>Quality</th>                        
-				  <th>Selling Price</th>
-				  <th>Discount</th>
-				  <th>Total Price</th>
-			  </tr>
-			</thead>
-			<tbody>
-			<tr>
-			  <td>1</td>
-			  <td>NT002</td>
-			  <td>PR003</td>
-			  <td>2</td>
-			  <td>Rp. 15.000</td>
-			  <td>0%</td>
-			  <td>Rp. 30.000</td>
-			</tr>
-			<tr>
-			  <td>2</td>
-			  <td>NT002</td>
-			  <td>PR004</td>
-			  <td>1</td>
-			  <td>Rp. 30.000</td>
-			  <td>0%</td>
-			  <td>Rp. 30.000</td>
-			</tr>
-			</tbody>
-			</table>
-		 </div>
-		 </div>
-	  </div>
-	  <div class="modal-footer">
-		<button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-	  </div>
-	</div>
-  </div>
-</div>
-         
-<!-- Modal Detail SALES 3-->
-<div id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-  <div role="document" class="modal-dialog modal-xl">
-	<div class="modal-content" >
-	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Detail View</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-	  </div>
-	  <div class="modal-body">
-		  <div class="table-responsive"> 
-			<div class="form-group">  
-				<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th></th>
-				  <th>Nota Id</th>
-				  <th>Product Id</th>                                   
-				  <th>Quality</th>                        
-				  <th>Selling Price</th>
-				  <th>Discount</th>
-				  <th>Total Price</th>
-			  </tr>
-			</thead>
-			<tbody>
-			<tr>
-			  <td>1</td>
-			  <td>NT003</td>
-			  <td>PR003</td>
-			  <td>2</td>
-			  <td>Rp. 15.000</td>
-			  <td>0%</td>
-			  <td>Rp. 30.000</td>
-			</tr>
-			<tr>
-			  <td>2</td>
-			  <td>NT002</td>
-			  <td>PR005</td>
-			  <td>2</td>
-			  <td>Rp. 10.000</td>
-			  <td>0%</td>
-			  <td>Rp. 20.000</td>
-			</tr>
-			</tbody>
-			</table>
-		 </div>
-		 </div>
-	  </div>
-	  <div class="modal-footer">
-		<button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-	  </div>
-	</div>
-  </div>
-</div>
-         
-<!-- Modal detail SALES 4-->
-<div id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-  <div role="document" class="modal-dialog modal-xl">
-	<div class="modal-content" >
-	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Detail View</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-	  </div>
-	  <div class="modal-body">
-		  <div class="table-responsive"> 
-			<div class="form-group">  
-				<table class="table table-striped">
-			  <thead>
-				<tr>
-				  <th></th>
-				  <th>Nota Id</th>
-				  <th>Product Id</th>                                   
-				  <th>Quality</th>                        
-				  <th>Selling Price</th>
-				  <th>Discount</th>
-				  <th>Total Price</th>
-			  </tr>
-			</thead>
-			<tbody>
-			<tr>
-			  <td>1</td>
-			  <td>NT004</td>
-			  <td>PR003</td>
-			  <td>2</td>
-			  <td>Rp. 15.000</td>
-			  <td>0%</td>
-			  <td>Rp. 30.000</td>
-			</tr>
-			<tr>
-			  <td>2</td>
-			  <td>NT002</td>
-			  <td>PR004</td>
-			  <td>1</td>
-			  <td>Rp. 30.000</td>
-			  <td>0%</td>
-			  <td>Rp. 30.000</td>
-			</tr>
-			<tr>
-			  <td>2</td>
-			  <td>NT002</td>
-			  <td>PR001</td>
-			  <td>1</td>
-			  <td>Rp. 10.000</td>
-			  <td>0%</td>
-			  <td>Rp. 10.000</td>
-			</tr>
-			</tbody>
-			</table>
-		 </div>
-		 </div>
-	  </div>
-	  <div class="modal-footer">
-		<button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-	  </div>
-	</div>
-  </div>
-</div>
-           
-<!-- Modal Hapus SALES -->       
-<div id="myModaldel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-  <div role="document" class="modal-dialog modal-sm">
-	<div class="modal-content" >
-	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Delete Sales</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-	  </div>
-	  <div class="modal-body">
-		  <h4>Are You Sure To Delete This Data?</h4>
-	  </div>
-	  <div class="modal-footer">
-		<a href="SalesIndex"><button type="submit" class="btn btn-danger">Yes</button></a>
-		<button type="button" data-dismiss="modal" class="btn btn-info">no</button>
-	  </div>
-	</div>
-  </div>
-</div>
-
-<!-- Modal Hapus SALES 1-->       
-<div id="myModaldel1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-  <div role="document" class="modal-dialog modal-sm">
-	<div class="modal-content" >
-	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Delete Salesr</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-	  </div>
-	  <div class="modal-body">
-		  <h4>Are You Sure To Delete This Data?</h4>
-	  </div>
-	  <div class="modal-footer">
-		<a href="SalesIndex"><button type="submit" class="btn btn-danger">Yes</button></a>
-		<button type="button" data-dismiss="modal" class="btn btn-info">no</button>
-	  </div>
-	</div>
-  </div>
-</div>
-
-<!-- Modal Hapus SALES 2-->       
-<div id="myModaldel2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-  <div role="document" class="modal-dialog modal-sm">
-	<div class="modal-content" >
-	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Delete Sales</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-	  </div>
-	  <div class="modal-body">
-		  <h4>Are You Sure To Delete This Data?</h4>
-	  </div>
-	  <div class="modal-footer">
-		<a href="SalesIndex"><button type="submit" class="btn btn-danger">Yes</button></a>
-		<button type="button" data-dismiss="modal" class="btn btn-info">no</button>
-	  </div>
-	</div>
-  </div>
-</div>
-
-<!-- Modal Hapus SALES 3-->       
-<div id="myModaldel3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-  <div role="document" class="modal-dialog modal-sm">
-	<div class="modal-content" >
-	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Delete Sales</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-	  </div>
-	  <div class="modal-body">
-		  <h4>Are You Sure To Delete This Data?</h4>
-	  </div>
-	  <div class="modal-footer">
-		<a href="SalesIndex"><button type="submit" class="btn btn-danger">Yes</button></a>
-		<button type="button" data-dismiss="modal" class="btn btn-info">no</button>
-	  </div>
-	</div>
-  </div>
-</div>
 @endsection
 		
                   

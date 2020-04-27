@@ -94,8 +94,6 @@
 			<input id="subtotal-val" type="text" disabled="" placeholder="Rp.0" class="mr-sm-3 form-control">
 			<label class="col-sm-form-control-label">Tax</label>
 			<input id="pajak" type="text" disabled="" placeholder="10%" class="mr-sm-3 form-control">
-			<label class="col-sm-form-control-label">Discount</label>
-			<input id="discount" type="text" placeholder="0" class="mr-sm-3 form-control" oninput="total()">
 		</div>
 	</div>
 
@@ -191,12 +189,12 @@
 		var cell5 = row.insertCell(4);
 		var cell6 = row.insertCell(5);
 		console.log(index);
-		cell1.innerHTML = '<input type="hidden" name="name['+barang[index]["PRODUCT_ID"]+']" value="'+barang[index]["PRODUCT_NAME"]+'">'+barang[index]["PRODUCT_NAME"];
+		cell1.innerHTML = '<input type="hidden" name="id['+barang[index]["PRODUCT_ID"]+']" value="'+barang[index]["PRODUCT_ID"]+'">'+barang[index]["PRODUCT_NAME"];
 		cell2.innerHTML = '<input type="number" name="qty['+barang[index]["PRODUCT_ID"]+']" value="1" oninput="recount(\''+barang[index]["PRODUCT_ID"]+'\')" id="qty'+barang[index]["PRODUCT_ID"]+'">';		
-		cell3.innerHTML = '<input type="hidden" id="harga'+barang[index]["PRODUCT_ID"]+'" name="harga['+barang[index]["Product_ID"]+']" value="'+barang[index]["PRODUCT_PRICE"]+'">'+barang[index]["PRODUCT_PRICE"];
+		cell3.innerHTML = '<input type="hidden" id="harga'+barang[index]["PRODUCT_ID"]+'" name="harga['+barang[index]["PRODUCT_ID"]+']" value="'+barang[index]["PRODUCT_PRICE"]+'">'+barang[index]["PRODUCT_PRICE"];
 		cell4.innerHTML = '<input class="discount" type="number" name="discount['+barang[index]["PRODUCT_ID"]+']" value="0" oninput="recount(\''+barang[index]["PRODUCT_ID"]+'\')" id="discount'+barang[index]["PRODUCT_ID"]+'">';	
 		cell5.innerHTML = '<input type="hidden" class="subtotal" name="subtotal['+barang[index]["PRODUCT_ID"]+']" value="'+barang[index]["PRODUCT_PRICE"]+'" id="subtotal'+barang[index]["PRODUCT_ID"]+'"><span id="subtotalval'+barang[index]["PRODUCT_ID"]+'">'+barang[index]["PRODUCT_PRICE"]+'</span>';
-		cell6.innerHTML = '<button onclick="hapusEl(\''+id+'\')">Del</button>';
+		cell6.innerHTML = '<button onclick="hapusEl(\''+id+'\')"  class="btn btn-danger">Del</button>';
 
 		total();
 		
@@ -226,8 +224,7 @@
 			total += Number(subtotals[i].value); 
 		}
 		document.getElementById("subtotal-val").value = total;
-		var disc = document.getElementById("discount").value;
-		total = parseInt(110/100*total)-Number(disc);
+		total = parseInt(110/100*total);
 		document.getElementById("total-val").value = total;
 
 	}

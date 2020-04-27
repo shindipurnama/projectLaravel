@@ -22,7 +22,7 @@ class SalesController extends Controller
 		$product=DB::table('product')->get();
         $sales = DB::table('sales')->get();
         $sales_detail = DB::table('sales_detail')->get();
-		return view('Transaksi/sales/sales',['sales'=>$sales, 'sales_detail'=>$sales_detail]);
+		return view('Transaksi/sales/sales',['sales'=>$sales, 'sales_detail'=>$sales_detail, 'product'=>$product, 'user'=>$user, 'customer'=>$customer]);
     }
 
     public function Index2()
@@ -67,6 +67,12 @@ class SalesController extends Controller
     public function show($id)
     {
         //
+        $salesdetail=DB::table('sales_detail')
+        ->select('sales_detail.*')
+        ->where('NOTA_ID', $id)
+        ->get();
+        //
+       return view("Transaksi/sales/sales",['sales_detail'=>$salesdetail]);
     }
 
     /**
