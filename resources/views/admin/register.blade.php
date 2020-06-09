@@ -60,6 +60,14 @@
                       <label for="register-username" class="label-material">Username</label>
                     </div>
                     <div class="form-group-material">
+                    <label for="register-jabatan" class="label-material">Jabatan</label>
+                      <select name="jabatan" class="form-control mb-3 mb-3" > 
+                        <option disabled selected>Pilih Jabatan</option>
+                        <option  value="0">Admin</option>
+                        <option  value="1">Kasir</option>
+                      </select>
+                    </div>
+                    <div class="form-group-material">
                       <input id="register-phone" type="text" name="phoneuser" required data-msg="Please enter a valid email address" class="input-material">
                       <label for="register-email" class="label-material">Phone</label>
                     </div>

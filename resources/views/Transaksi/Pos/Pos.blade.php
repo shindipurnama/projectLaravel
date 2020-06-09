@@ -110,7 +110,7 @@
 </form>
 </div>
 
-<!-- Modal -->
+<!-- Modal Product-->
   <div class="modal fade bd-example-modal-lg" id="myModal" role="dialog">
     <div class="modal-dialog modal-lg">
     
@@ -121,6 +121,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
+		<div class="table-responsive"> 
          	<table width="100%" cellpadding="10px" bordercolorlight="#E8A7A8" border="2"> 
 		<thead>
 			<th width="295">Product ID</th>
@@ -145,10 +146,14 @@
              @endforeach
 		</tbody>
 	</table>
+	</div>
  </div>
         
       </div>
-    <!-- end of modal content -->                     
+    <!-- end of modal content -->      
+
+  
+
           </div>
         </div>
       </div>

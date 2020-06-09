@@ -81,7 +81,7 @@
 					</div>
 
 					<div class="col-md-3 col-sm-6">
-							<div class="icon-windows"><strong>Date</strong></div>
+							<div class="icon-windows"><strong>Total Payment</strong></div>
 							<input type="text" disabled="" value="{{ $sls->TOTAL_PAYMENT }}" class="form-control">
 					</div>
 					</div>
@@ -122,7 +122,7 @@
 							</table>
 						</div>
 						</div>
-					</div>
+					
 					@endif
 					<div class="modal-footer">
 						<button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
@@ -130,6 +130,7 @@
 					</div>
 				</div>
 				</div>
+				</div> 
 				@endforeach
 @endsection
 		

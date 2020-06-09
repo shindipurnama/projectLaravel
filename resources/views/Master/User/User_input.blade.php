@@ -39,6 +39,17 @@
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
+		<label class="col-sm-3 form-control-label">Jabatan</label>
+		<div class="col-sm-9">
+		<select name="jabatan" class="form-control mb-3 mb-3" > 
+			<option disabled selected>Pilih Jabatan</option>
+			<option  value="0">Admin</option>
+			<option  value="1">Kasir</option>
+		  </select>
+		  </div>
+	  </div>
+	  <div class="line"></div>
+	  <div class="form-group row">
 	 	<label class="col-sm-3 form-control-label">Phone</label>
 	  	<div class="col-sm-9">
 			<input type="text" class="form-control" name="phoneuser" id="phoneuser"><small class="help-block-none">Input with number</small>

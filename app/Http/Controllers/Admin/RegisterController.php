@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\user;
 
 class RegisterController extends Controller
@@ -20,7 +21,8 @@ class RegisterController extends Controller
 			'USER_ID' => $request->iduser,
 			'FIRST_NAME' => $request->firstuser,
             'LAST_NAME' => $request->lastuser,
-            'USERNAME' => $request->username,
+			'USERNAME' => $request->username,
+			'JABATAN' =>$request->jabatan,
 			'PHONE' => $request->phoneuser,
 			'EMAIL' => $request->emailuser,
 			'PASSWORD' => $request->passuser,

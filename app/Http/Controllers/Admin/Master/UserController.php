@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\user;
 
 class UserController extends Controller
@@ -46,6 +47,7 @@ class UserController extends Controller
 			'FIRST_NAME' => $request->firstuser,
             'LAST_NAME' => $request->lastuser,
             'USERNAME' => $request->username,
+            'JABATAN' =>$request->jabatan,
 			'PHONE' => $request->phoneuser,
 			'EMAIL' => $request->emailuser,
 			'PASSWORD' => $request->passuser,
@@ -92,6 +94,7 @@ class UserController extends Controller
 			'FIRST_NAME' => $request->firstuser,
             'LAST_NAME' => $request->lastuser,
             'USERNAME' => $request->username,
+            'JABATAN' =>$request->jabatan,
 			'PHONE' => $request->phoneuser,
 			'EMAIL' => $request->emailuser,
 			'PASSWORD' => $request->passuser,

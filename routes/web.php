@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::get('index','Admin\AdminController@index_admin');
 Route::get('/','Admin\LoginController@index');
 Route::get('login','Admin\LoginController@index');
 Route::post('proses','Admin\LoginController@proses');
+Route::get('logout', 'Admin\LoginController@logout');
 
 Route::get('register','Admin\RegisterController@index');
 Route::post('RegisterStore','Admin\RegisterController@store');

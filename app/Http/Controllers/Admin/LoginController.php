@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use App\user;
 
 class LoginController extends Controller
@@ -16,21 +16,30 @@ class LoginController extends Controller
 	
 	public function proses(Request $req){
 		$emailuser = $req->EMAIL;
-		$password = $req->PASSWORD;
+        $password = $req->PASSWORD;
 		$data = user::where('EMAIL',$emailuser)->first();
         if($data){
             if($data->PASSWORD == $password){
                 Session::put('login',TRUE);
-                return redirect('index');
+                if($data->JABATAN == 0){
+                    Session::put('admin',TRUE);
+                    return redirect('index');
+                }
+                return redirect('PosIndex');
             }
             else{
-                return redirect('login')->with('alert','Password atau Email, Salah !');
+                return redirect('login')->with('alert','Incorrect password !');
             }
         }
         else{
-            return redirect('login')->with('alert','anda belum terdaftar');
-            
-        }
-	}
+            return redirect('login')->with('alert','Incorrect email !');
+         }
+    }
+
+    public function logout(){
+        Session::flush();
+        return redirect('login')->with('alert-success','You Have Been Signed Out');
+    }
+
 
 }

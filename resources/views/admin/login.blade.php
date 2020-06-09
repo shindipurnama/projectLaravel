@@ -38,6 +38,8 @@
                     <h1>HALLO</h1>
                   </div>
                   <p>Project Laravel Pemrograman berbasis WEB <br> - by Shindi purnama putri - 151811513009 -</p>
+                  <br><p> - Login Admin - <br> Email : Admin@admin.com - Pass : admin</p>
+                  <p> - Login Kasir - <br> Email : kasir@kasir.com - Pass : kasir</p>
                 </div>
               </div>
             </div>
@@ -45,10 +47,20 @@
             <div class="col-lg-6">
               <div class="form d-flex align-items-center">
                 <div class="content">
+                  @if(\Session::has('alert'))
+                        <div class="alert alert-danger">
+                            <div>{{Session::get('alert')}}</div>
+                        </div>
+                    @endif
+                    @if(\Session::has('alert-success'))
+                        <div class="alert alert-success">
+                            <div>{{Session::get('alert-success')}}</div>
+                        </div>
+                    @endif
                   <form class="form-validate mb-4" action="proses" method="post">
                   <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                     <div class="form-group">
-                      <input type="text" name="EMAIL" required data-msg="Please enter your username" class="input-material">
+                      <input type="email" name="EMAIL" required data-msg="Please enter your email correctly" class="input-material">
                       <label class="label-material">Email</label>
                     </div>
                     <div class="form-group">
@@ -77,5 +89,6 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="js/front.js"></script>
+    <script type="text/javascript"></script>
   </body>
 </html>

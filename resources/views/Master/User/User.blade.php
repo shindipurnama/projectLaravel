@@ -16,7 +16,8 @@
 				  <th>User Id</th>
 				  <th>First Name</th>
 				  <th>Last Name</th>
-				  <th>UserName</th>                                   
+				  <th>UserName</th>
+				  <th>Jabatan</th>                                   
 				  <th>Email</th>                        
 				  <th>Phone</th>
 				  <th>Password</th>
@@ -32,7 +33,12 @@
 			  <td>{{ $us->USER_ID }}</td>
 			  <td>{{ $us->FIRST_NAME }}</td>
 			  <td>{{ $us->LAST_NAME }}</td>
-			  <td>{{ $us->LAST_NAME }}</td>
+			  <td>{{ $us->USERNAME }}</td>
+			  @if($us->JABATAN == 0)
+					<td><span class="badge badge-warning">Admin</span></td>
+				@else
+					<td><span class="badge badge-primary">Kasir</span></td>
+				@endif
 			  <td>{{ $us->EMAIL }}</td>
 			  <td>{{ $us->PHONE }}</td>
 			  <td>{{ $us->PASSWORD }}</td>
