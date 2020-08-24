@@ -17,8 +17,13 @@ class Sales_DetailController extends Controller
     public function index()
     {
         //
-		return view('Transaksi/Sales_Detail/sales_detail');
-    }
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','You Must To Login First');
+        }
+        else{
+        return view('Transaksi/Sales_Detail/sales_detail');
+        }
+    } 
 
     /**
      * Show the form for creating a new resource.

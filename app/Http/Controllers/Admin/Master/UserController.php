@@ -18,8 +18,13 @@ class UserController extends Controller
     public function index()
     {
         //
-		$user = user::all();
-		return view('Master/User/User',['user'=>$user]);
+        $user = user::all();
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','You Must To Login First');
+        }
+        else{
+        return view('Master/User/User',['user'=>$user]);
+        }
     }
 
     /**

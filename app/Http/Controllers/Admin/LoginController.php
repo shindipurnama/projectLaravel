@@ -13,7 +13,7 @@ class LoginController extends Controller
 	public function index(){
 		return view('admin/login');
 	}
-	
+	 
 	public function proses(Request $req){
 		$emailuser = $req->EMAIL;
         $password = $req->PASSWORD;

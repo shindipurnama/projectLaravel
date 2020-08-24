@@ -28,10 +28,13 @@ Route::post('RegisterStore','Admin\RegisterController@store');
 
 Route::get('SalesDetail','Admin\Transaksi\SalesController@Index2');
 Route::get('SalesIndex','Admin\Transaksi\SalesController@Index');
+Route::get('invoicePDF/{id}','Admin\Transaksi\SalesController@cetak_pdf');
+Route::get('salesPDF','Admin\Transaksi\SalesController@cetak_pdf_sales');
 Route::get('SalesDetailView','Admin\Transaksi\PosController@show');
 Route::get('PosIndex','Admin\Transaksi\PosController@Index');
 Route::get('PosIndex','Admin\Transaksi\PosController@create');
 Route::post('PosStore','Admin\Transaksi\PosController@store');
+
 
 Route::get('CategoriesIndex','Admin\Master\CategoriesController@index');
 Route::get('CategoriesCreate','Admin\Master\CategoriesController@create');

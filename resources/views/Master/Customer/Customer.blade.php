@@ -18,8 +18,8 @@
 			  <th>User Id</th>
 			  <th>First Name</th>
 			  <th>Last Name</th>                                   
-			  <th>Email</th>                        
-			  <th>Phone</th>
+			  <th>Phone</th>                        
+			  <th>EMail</th>
 			  <th>Street</th>
 			  <th>City</th>
 			  <th>State</th>

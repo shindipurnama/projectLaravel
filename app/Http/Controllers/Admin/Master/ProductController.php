@@ -19,8 +19,13 @@ class ProductController extends Controller
     public function index()
     {
         //
-		$product = product::all();
-		return view('Master/Product/Product',['product'=>$product]);
+        $product = product::all();
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','You Must To Login First');
+        }
+        else{
+        return view('Master/Product/Product',['product'=>$product]);
+        }
     }
 
     /**

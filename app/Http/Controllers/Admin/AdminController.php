@@ -12,7 +12,7 @@ class AdminController extends Controller
     //
 	public function index_admin(){
 		if(!Session::get('login')){
-            return redirect('login')->with('alert','Kamu harus login dulu');
+            return redirect('login')->with('alert','You Must To Login First');
         }
         else{
 		return view('admin/home');

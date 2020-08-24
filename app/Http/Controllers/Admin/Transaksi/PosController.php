@@ -17,7 +17,12 @@ class PosController extends Controller
     public function Index()
     {
         //
-		return view('Transaksi/Pos/Pos');
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','You Must To Login First');
+        }
+        else{
+        return view('Transaksi/Pos/Pos');
+        }
     }
 
     /**
@@ -32,13 +37,18 @@ class PosController extends Controller
         $user=DB::table('user')->get();
 		$customer=DB::table('customer')->get();
 		$categories=DB::table('categories')->get();
-		$product=DB::table('product')->get();
+        $product=DB::table('product')->get();
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','You Must To Login First');
+        }
+        else{
 		return view('Transaksi/Pos/Pos',[
             'NOTA_ID'=>$NOTA_ID,
             'user'=>$user,
             'customer'=>$customer,
             'categories'=>$categories, 
             'product'=>$product]);
+        }
     }
 
     /**

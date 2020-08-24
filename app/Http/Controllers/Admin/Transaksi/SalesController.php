@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use PDF;
 
 class SalesController extends Controller
 {
@@ -23,8 +24,14 @@ class SalesController extends Controller
 		$product=DB::table('product')->get();
         $sales = DB::table('sales')->get();
         $sales_detail = DB::table('sales_detail')->get();
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','You Must To Login First');
+        }
+        else{
 		return view('Transaksi/sales/sales',['sales'=>$sales, 'sales_detail'=>$sales_detail, 'product'=>$product, 'user'=>$user, 'customer'=>$customer]);
+        }
     }
+
 
     public function Index2()
     {
@@ -110,5 +117,31 @@ class SalesController extends Controller
     {
         //
 		return 'ini halaman destroy';
+    }
+
+    public function cetak_pdf($id)
+    {
+        $user=DB::table('user')->get();
+		$customer=DB::table('customer')->get();
+		$categories=DB::table('categories')->get();
+		$product=DB::table('product')->get();
+        $sales = DB::table('sales',$id)->get();
+        $sales_detail = DB::table('sales_detail')->get();
+        $nota_id = $id;
+        $pdf = PDF::loadview('Transaksi/sales/invoice_pdf',['id'=>$nota_id,'sales'=>$sales, 'sales_detail'=>$sales_detail, 'product'=>$product, 'user'=>$user, 'customer'=>$customer], compact('invoice'))->setPaper('a4');
+    	return $pdf->stream('invoice-pdf');
+    }
+
+    public function cetak_pdf_sales()
+    {
+        $user=DB::table('user')->get();
+		$customer=DB::table('customer')->get();
+		$categories=DB::table('categories')->get();
+		$product=DB::table('product')->get();
+        $sales = DB::table('sales')->get();
+        $sales_detail = DB::table('sales_detail')->get();
+
+        $pdf = PDF::loadview('Transaksi/sales/sales_pdf',['sales'=>$sales, 'sales_detail'=>$sales_detail, 'product'=>$product, 'user'=>$user, 'customer'=>$customer], compact('invoice'))->setPaper('a4');
+    	return $pdf->stream('sales-pdf');
     }
 }

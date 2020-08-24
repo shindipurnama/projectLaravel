@@ -17,8 +17,13 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-		$categories = DB::table('categories')->get();
-		return view('Master/Categories/Categories',['categories'=>$categories]);
+        $categories = DB::table('categories')->get();
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','You Must To Login First');
+        }
+        else{
+        return view('Master/Categories/Categories',['categories'=>$categories]);
+        }
     }
 
     /**

@@ -13,7 +13,8 @@
 	<div class="col-lg-3">
 		<div class="block margin-bottom-sm">
 			<label for="inlineFormInput" class="col-sm-form-control-label">Nota</label>
-				<input name="notaid" id="notaid" type="text" disabled="" placeholder="AUTO" class="mr-sm-3 form-control">
+				<input name="notaid" id="notaid" type="text" disabled="" placeholder="AUTO" 
+				class="mr-sm-3 form-control">
 			<label for="inlineFormInput" class="col-sm-form-control-label">Date</label>
 				<input name='date' id="date" type="date"  class="mr-sm-3 form-control" >
 		</div>
@@ -49,7 +50,8 @@
 		<div class="col-lg-4">
 			<div class="block margin-bottom-sm">
 				<label class="col-sm-form-control-label">Category ID</label>
-				<input for="inlineFormInput" type="text" disabled="" placeholder="AUTO" class="mr-sm-1 form-control">
+				<input for="inlineFormInput" type="text" disabled="" placeholder="AUTO" 
+					class="mr-sm-1 form-control">
 				<label for="inlineFormInput" class="col-sm-form-control-label">Category Name</label>
 					<select id="inlineFormInput" name="idcat" class="form-control mb-0 mb-0">
 					<option disabled selected>Pilih Category</option>
@@ -68,7 +70,8 @@
 
 	<div class="block margin-bottom-sm">
 	<center>
-	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Select Product</button>
+	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	  	Select Product</button>
 	<br><br>
 	</center>
 	<table id="keranjang" width="100%" cellpadding="10px" bordercolorlight="#E8A7A8" border="2"> 
@@ -141,7 +144,8 @@
 						  <td>{{ $pr->PRODUCT_PRICE }}</td>
 						  <td>{{ $pr->PRODUCT_STOCK }}</td>
 						  <td>{{ $pr->EXPLANATION }}</td>
-						  <td><input type="button" onclick="pilihBarang('{{ $pr -> PRODUCT_ID }}')" value="add" class="btn btn-info"></td>
+						  <td><input type="button" onclick="pilihBarang('{{ $pr -> PRODUCT_ID }}')" 
+						  value="add" class="btn btn-info"></td>
                     </tr>
              @endforeach
 		</tbody>
@@ -255,7 +259,6 @@
 		total();
 	}
 
-	
 </script>
 
 @endsection

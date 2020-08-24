@@ -18,8 +18,13 @@ class CustomerController extends Controller
     public function index()
     {
         //
-		$customer = DB::table('customer')->get();
-		return view('Master/Customer/Customer',['customer'=>$customer]);
+        $customer = DB::table('customer')->get();
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','You Must To Login First');
+        }
+        else{
+        return view('Master/Customer/Customer',['customer'=>$customer]);
+        }
     }
 
     /**

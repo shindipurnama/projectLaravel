@@ -43,7 +43,7 @@
                 </div>
               </div>
             </div>
-            <!-- Form Panel    -->
+            <!-- Form Panel    --> 
             <div class="col-lg-6">
               <div class="form d-flex align-items-center">
                 <div class="content">

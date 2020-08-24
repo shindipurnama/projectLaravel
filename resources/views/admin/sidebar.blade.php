@@ -3,11 +3,19 @@
   <nav id="sidebar">
 	<!-- Sidebar Header-->
 	<div class="sidebar-header d-flex align-items-center">
-	  <div class="avatar"><img src="fotoku.jfif" alt="..." class="img-fluid rounded-circle"></div>
+	  <div class="avatar"><img src="profile.png" alt="..." class="img-fluid rounded-circle"></div>
+	  @if(\Session::has('admin'))
 	  <div class="title">
-		<h1 class="h5">Shindi Purnama Putri</h1>
-		<p>Web Designer</p>
+		<h1 class="h5">Admin</h1>
+		<p>Shindi's Store</p>
 	  </div>
+	  @endif
+	  @if(!Session::has('admin'))
+	  <div class="title">
+		<h1 class="h5">Kasir</h1>
+		<p>Welcome Back</p>
+	  </div>
+	  @endif
 	</div>
 	<!-- Sidebar Navidation Menus--><span class="heading">Main</span>
 	<ul class="list-unstyled">

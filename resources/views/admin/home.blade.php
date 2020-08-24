@@ -5,4 +5,4 @@
 @endsection
 @section('konten')
 		 <center><img src="welcome5.gif" width="650px" height="400px"></center>
-@endsection
+@endsection 

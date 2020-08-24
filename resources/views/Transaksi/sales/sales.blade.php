@@ -27,19 +27,21 @@
 			@php $no = 1; @endphp
 		  	@foreach ($sales as $sls)
 			<tr>
-			  <td>{{ $no++ }}</td>
-			  <td>{{ $sls->NOTA_ID }}</td>
-			  <td>{{ $sls->CUSTOMER_ID }}</td>
-			  <td>{{ $sls->USER_ID }}</td>
-			  <td>{{ $sls->NOTA_DATE }}</td>
-			  <td>{{ $sls->TOTAL_PAYMENT }}</td>
-			  <td><input type="submit" value="DETAIL" data-toggle="modal" data-target="#myModal{{ $sls->NOTA_ID }}" class="btn btn-danger"></td>
+				<td>{{ $no++ }}</td>
+				<td>{{ $sls->NOTA_ID }}</td>
+				<td>{{ $sls->CUSTOMER_ID }}</td>
+				<td>{{ $sls->USER_ID }}</td>
+				<td>{{ $sls->NOTA_DATE }}</td>
+				<td>{{ $sls->TOTAL_PAYMENT }}</td>
+				<td><input type="submit" value="DETAIL" data-toggle="modal" data-target="#myModal{{ $sls->NOTA_ID }}" class="btn btn-danger btn-sm"> 
+				<a href="invoicePDF/{{ $sls->NOTA_ID }}" class="btn btn-secondary btn-sm">Invoice</a></td>
 			</tr>
 			
 			@endforeach
 		</tbody>
 		</table>
-		<center><a href="SalesDetail"><input type="submit" value="Details of Sales Recap" class="btn btn-primary"></a></center>
+		<center><a href="SalesDetail"><input type="submit" value="Details of Sales Recap" class="btn btn-primary"></a>
+		<a href="salesPDF"><input type="submit" value="Print Sales" class="btn btn-success"></a></center>
 				  </div>
 				  </div>
 				  </div>
@@ -56,7 +58,7 @@
 					<div class="modal-body">
 					
 					@if( ($sls->NOTA_ID)  ==  ($sls->NOTA_ID) )
-					<duv class="form-inline">
+					<div class="form-inline">
 					<div class="col-md-3 col-sm-6">
 					@foreach($user as $us)
 						@if (($sls->USER_ID) == ($us->USER_ID))
