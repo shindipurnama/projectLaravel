@@ -19,14 +19,13 @@
 			<div class="form-group row has-danger">
 				<label class="col-sm-3 form-control-label">Category Name</label>
 				<div class="col-sm-9">
-				  <input type="text" class="form-control" name="namecat" id="namecat">
+				  <input type="text" class="form-control" name="namecat" id="namecat" required >
 				</div>
 			  </div>
 			  <div class="form-group row">
 				<label class="col-sm-3 form-control-label">Status</label>
 				<div class="col-sm-9">
 				  <select name="cats" class="form-control mb-3 mb-3" > 
-					<option disabled selected>Pilih Status</option>
 					<option  value="0">Active</option>
 					<option  value="1">Non - Active</option>
 				  </select>

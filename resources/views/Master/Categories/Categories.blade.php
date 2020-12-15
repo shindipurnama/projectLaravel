@@ -17,7 +17,7 @@
 			  <th>#</th>
 			  <th>Category Id</th>
 			  <th>Category Name</th>  
-			  <th></th>	
+			  <th>Category Status</th>	
 			  <th>Action</th>
 			</tr>
 		  </thead>

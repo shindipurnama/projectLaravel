@@ -19,7 +19,7 @@
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">First Name</label>
 		<div class="col-sm-9">
-		  <input type="text" class="form-control" name="firstcus" id="firstcus">
+		  <input type="text" class="form-control" name="firstcus" id="firstcus" required>
 		</div>
 	  </div>
 	  <div class="line"></div>
@@ -33,41 +33,41 @@
 	  <div class="form-group row">
 	 	<label class="col-sm-3 form-control-label">Phone</label>
 	  	<div class="col-sm-9">
-			<input type="text" class="form-control" name="phonecus" id="phonecus"><small class="help-block-none">Input with number</small>
+			<input type="text" class="form-control" name="phonecus" id="phonecus" required><small class="help-block-none">Input with number</small>
 	 	 </div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Email</label>
 		<div class="col-sm-9">
-		  <input type="email" class="form-control" name="emailcus" id="emailcus">
+		  <input type="email" class="form-control" name="emailcus" id="emailcus" required>
 		</div>
 	  </div>
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Street</label>
 		<div class="col-sm-9">
-		  <input type="text" class="form-control" name="streetcus" id="namecus">
+		  <input type="text" class="form-control" name="streetcus" id="namecus" required>
 		</div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">City</label>
 		<div class="col-sm-9">
-		  <input type="text" class="form-control" name="citycus" id="citycus">
+		  <input type="text" class="form-control" name="citycus" id="citycus" required>
 		</div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">State</label>
 		<div class="col-sm-9">
-		  <input type="text" class="form-control" name="statecus" id="statecus">
+		  <input type="text" class="form-control" name="statecus" id="statecus" required>
 		</div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
-		<label class="col-sm-3 form-control-label">Zip Code</label>
+		<label class="col-sm-3 form-control-label" required>Zip Code</label>
 		<div class="col-sm-9">
-		  <input type="text" class="form-control" name="zccus" id="zccus">
+		  <input type="text" class="form-control" name="zccus" id="zccus" required>
 		</div>
 	  </div>
 	  <div class="line"></div>
@@ -75,7 +75,6 @@
 		<label class="col-sm-3 form-control-label">Status</label>
 		<div class="col-sm-9">
 		  <select name="cuss" class="form-control mb-3 mb-3" > 
-			<option disabled selected>Pilih Status</option>
 			<option  value="0">Active</option>
 			<option  value="1">Non - Active</option>
 		  </select>

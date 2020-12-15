@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2020 at 05:29 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Generation Time: Oct 21, 2020 at 02:37 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.3.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -39,12 +38,12 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`CATEGORY_ID`, `CATEGORY_NAME`, `CATEGORY_STATUS`) VALUES
-('CAT01', 'makanan', 0),
-('CAT02', 'minuman', 0),
-('CAT03', 'snack', 0),
-('CAT04', 'dissert', 0),
-('CAT05', 'coba', 0),
-('CAT06', 'dissert', 1);
+('CAT01', 'CATEGORY_NAME', 0),
+('CAT02', 'Biskuit', 0),
+('CAT03', 'Snack', 0),
+('CAT04', 'Roti Dan Kue', 0),
+('CAT05', 'Coklat Dan Permen', 0),
+('CAT06', 'Mie Dan Pasta', 0);
 
 --
 -- Triggers `categories`
@@ -81,9 +80,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`CUSTOMER_ID`, `FIRST_NAME`, `LAST_NAME`, `PHONE`, `EMAIL`, `STREET`, `CITY`, `STATE`, `ZIP_CODE`, `CUSTOMER_STATUS`) VALUES
-('CUS001', 'HAA', 'LO', '1883717319', 'HAA@gmail.com', 'A', 'A', 'A', '9081', 0),
-('CUS002', 'MA', 'KAN', '897986513134', 'makan@gmail.com', 'A', 'a', 'a', '12', 0),
-('CUS003', 'SHINDI', 'Purnama', '752513290', 'Shindi@gmail.com', 'wiyung', 'surabaya', 'indonesia', '60227', 0);
+('CUS001', 'Cika', 'Monica', '8911236182', 'cika@gmail.com', 'wiyung', 'surabaya', 'Indonesia', '6028', 0);
 
 --
 -- Triggers `customer`
@@ -108,7 +105,7 @@ CREATE TABLE `product` (
   `PRODUCT_NAME` varchar(50) DEFAULT NULL,
   `PRODUCT_PRICE` float DEFAULT NULL,
   `PRODUCT_STOCK` decimal(3,0) DEFAULT NULL,
-  `EXPLANATION` text
+  `EXPLANATION` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -116,13 +113,11 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`PRODUCT_ID`, `CATEGORY_ID`, `PRODUCT_NAME`, `PRODUCT_PRICE`, `PRODUCT_STOCK`, `EXPLANATION`) VALUES
-('PRO001', 'CAT01', 'Nasi Goreng', 10000, '10', 'nasi goreng jawa'),
-('PRO002', 'CAT01', 'Bakmi Goreng', 10000, '10', NULL),
-('PRO003', 'CAT02', 'Teh Panas', 3000, '100', NULL),
-('PRO004', 'CAT02', 'Es Teh', 4000, '100', NULL),
-('PRO005', 'CAT03', 'Citato', 5000, '50', NULL),
-('PRO006', 'CAT01', 'Ice Creem AICE', 2000, '20', NULL),
-('PRO007', 'CAT03', 'Cireng', 10000, '10', 'good');
+('PRO001', 'CAT01', 'Regal', 17300, '123', 'Regal Marie Roll 230 gr merupakan biskuit dengan tekstur yang lembut membuat makanan ringan ini ideal dinikmati semua kalangan. Cocok dijadikan sajian untuk tamu, pelengkap saat minum bersama teh atau kopi, ataupun saat santai dinikmati saat menonton TV.\r\n'),
+('PRO002', 'CAT01', 'Tim Tam', 3000, '309', 'Tim Tam Biscuit Jumbo Pack 22 gr merupakan biskuit lapis cokelat dari Tim Tam. Terbuat dari bahan berkualitas, sangat lezat, nikmat & memuaskan. Biskuit berlapis cokelat yang diisi oleh krim cokelat di dalamnya.Tekstur biskuitnya begitu renyah dan lumer di lidah. Kelezatannya begitu terasa sampai gigitan terakhir. Lebih nikmat lagi, jika dinikmati bersama teh atau kopi.\r\n'),
+('PRO003', 'CAT01', 'Hatari', 5600, '63', 'Hatari See Hong Puff 260gr merupakan cemilan biskuit dengan varian rasa krim yang nikmat. Sangat cocok dinikmati saat santai bersama keluarga dan teman bersama kopi atau susu panas.\r\n'),
+('PRO004', 'CAT02', 'Cheetos', 1000, '81', 'Terdiri atas 2 Variant Jagung bakar dan net barbeque\r\n'),
+('PRO005', 'CAT02', 'Pringles', 19000, '10', 'Awalnya dipasarkan sebagai Pringles bermodel Potato Chips, Pringles adalah merek kentang dan berbasis gandum makanan ringan stackable chip yang sekarang dimiliki oleh Kelloggs dan dijual di lebih dari 140 negara. Pringles adalah merek makanan ringan yang paling populer keempat setelah Lay, Doritos dan Cheetos di 2012. Komposisi: Kentang, minyak nabati, tepung berasam pati gandum, air, maltodextrin, pengemulsi nabati, garam, dekstrosa, dan pengatur keasaman asam sitrat Pringles Original 107gr Terbuat dari kentang Asli dan serbuk gandum Renyah dan nikmat dikonsumsi Mengandung Sumber protein, Energi dan karbohidrat Ideal dinikmati saat santai Anda bersama keluarga\r\n');
 
 --
 -- Triggers `product`
@@ -154,8 +149,8 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`NOTA_ID`, `USER_ID`, `CUSTOMER_ID`, `NOTA_DATE`, `TOTAL_PAYMENT`) VALUES
-('NT00001', 'US001', 'CUS002', '2020-04-01', 50000),
-('NT00002', 'US003', 'CUS002', '2020-04-26', 11000);
+('NT00001', 'US002', 'CUS001', '2020-10-21', 3300),
+('NT00002', NULL, NULL, NULL, NULL);
 
 --
 -- Triggers `sales`
@@ -188,9 +183,7 @@ CREATE TABLE `sales_detail` (
 --
 
 INSERT INTO `sales_detail` (`NOTA_ID`, `PRODUCT_ID`, `QUANTITY`, `SELLING_PRICE`, `DISCOUNT`, `TOTAL_PRICE`) VALUES
-('NT00001', 'PRO001', '1', 25000, 0, 25000),
-('NT00001', 'PRO002', '1', 25000, 0, 25000),
-('NT00002', 'PRO001', '1', 10000, 0, 10000);
+('NT00001', 'PRO002', '1', 3000, 0, 3000);
 
 -- --------------------------------------------------------
 
@@ -207,7 +200,7 @@ CREATE TABLE `user` (
   `EMAIL` varchar(50) DEFAULT NULL,
   `PHONE` decimal(12,0) DEFAULT NULL,
   `PASSWORD` char(8) DEFAULT NULL,
-  `JOB_STATUS` tinytext
+  `JOB_STATUS` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -215,17 +208,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`USER_ID`, `FIRST_NAME`, `LAST_NAME`, `USERNAME`, `JABATAN`, `EMAIL`, `PHONE`, `PASSWORD`, `JOB_STATUS`) VALUES
-('US001', 'AKU', 'KAMU', 'AkuKamu', 0, 'Hi@gmail.com', '1234568', 'hallo', '0'),
-('US002', 'Hi', 'yo', 'Hiyo', 0, 'hiyo@gmail.com', '123456789', 'hiyo', '0'),
-('US003', 'yo', 'whtsup', 'yowhtsup', 0, 'yowhtsup@gmail.com', '762891928', 'whtsup', '0'),
-('US004', 'im', 'tired', 'imtired', 1, 'tired@gmail.com', '1526391012', 'capek', '0'),
-('US005', 'whennn', 'its done', 'itsdone', 1, 'tired@gmail.com', '12345', '1234', '0'),
-('US006', 'Delisa', 'Monica', 'DelisaMon', 1, 'halloZ@gmail.com', '1233654', '123', NULL),
-('US007', 'hallo', 'Ardiansya', '151711513019', 1, 'nisap123@gmai.com', '321456', '123', '0'),
-('US008', 'cempaka', 'bunga', 'cembung', 0, 'cembung@gmail.com', '12345678', '1234', '0'),
-('US009', 'Badar', 'Putra', 'Batra', 1, 'batra@gmail.com', '12345', NULL, '0'),
-('US010', 'admin', 'admin', 'admin', 0, 'admin@admin.com', '1233654', 'admin', '0'),
-('US011', 'kasir', 'kasir', 'kasir', 1, 'kasir@kasir.com', '123546', 'kasir', NULL);
+('US001', 'Admin', '1', 'Admin1', 0, 'admin@admin.com', '8135286152', 'admin', '0'),
+('US002', 'Kasir', '1', 'Kasir1', 1, 'kasir@kasir.com', '8135286152', 'kasir', '0');
 
 --
 -- Triggers `user`

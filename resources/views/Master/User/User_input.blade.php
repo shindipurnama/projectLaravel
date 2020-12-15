@@ -20,7 +20,7 @@
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">First Name</label>
 		<div class="col-sm-9">
-		  <input type="text" class="form-control" name="firstuser" id="firstuser">
+		  <input type="text" class="form-control" name="firstuser" id="firstuser" required>
 		</div>
 	  </div>
 	  <div class="line"></div>
@@ -34,7 +34,7 @@
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Username</label>
 			<div class="col-sm-9">
-		 	 <input type="text" class="form-control" name="username" id="username">
+		 	 <input type="text" class="form-control" name="username" id="username" required>
 			</div>
 	  </div>
 	  <div class="line"></div>
@@ -42,7 +42,6 @@
 		<label class="col-sm-3 form-control-label">Jabatan</label>
 		<div class="col-sm-9">
 		<select name="jabatan" class="form-control mb-3 mb-3" > 
-			<option disabled selected>Pilih Jabatan</option>
 			<option  value="0">Admin</option>
 			<option  value="1">Kasir</option>
 		  </select>
@@ -52,26 +51,26 @@
 	  <div class="form-group row">
 	 	<label class="col-sm-3 form-control-label">Phone</label>
 	  	<div class="col-sm-9">
-			<input type="text" class="form-control" name="phoneuser" id="phoneuser"><small class="help-block-none">Input with number</small>
+			<input type="text" class="form-control" name="phoneuser" id="phoneuser" required><small class="help-block-none">Input with number</small>
 	 	 </div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
-		<label class="col-sm-3 form-control-label">Email</label>
+		<label class="col-sm-3 form-control-label" required>Email</label>
 		<div class="col-sm-9">
-		  <input type="email" class="form-control" name="emailuser" id="emailuser">
+		  <input type="email" class="form-control" name="emailuser" id="emailuser" required>
 		</div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
-		<label class="col-sm-3 form-control-label">Password</label>
+		<label class="col-sm-3 form-control-label" required>Password</label>
 		<div class="col-sm-9">
-		  <input type="password" placeholder="Password" class="form-control" name="passuser" id="passuser">
+		  <input type="password" placeholder="Password" class="form-control" name="passuser" id="passuser" required>
 		</div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
-		<label class="col-sm-3 form-control-label">Confirm Password</label>
+		<label class="col-sm-3 form-control-label" required>Confirm Password</label>
 		<div class="col-sm-9">
 		  <input type="password" placeholder="Confirm Password" class="form-control" name="passuser" id="copass" onkeyup="cekPass()">
 			<p id="eror" style="color:red"></p>		  
@@ -82,7 +81,6 @@
 		<label class="col-sm-3 form-control-label">Job Status</label>
 		<div class="col-sm-9">
 		<select name="jsuser" class="form-control mb-3 mb-3" > 
-			<option disabled selected>Pilih Status</option>
 			<option  value="0">Active</option>
 			<option  value="1">Non - Active</option>
 		  </select>

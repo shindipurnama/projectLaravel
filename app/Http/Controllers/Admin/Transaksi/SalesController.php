@@ -128,7 +128,7 @@ class SalesController extends Controller
         $sales = DB::table('sales',$id)->get();
         $sales_detail = DB::table('sales_detail')->get();
         $nota_id = $id;
-        $pdf = PDF::loadview('Transaksi/sales/invoice_pdf',['id'=>$nota_id,'sales'=>$sales, 'sales_detail'=>$sales_detail, 'product'=>$product, 'user'=>$user, 'customer'=>$customer], compact('invoice'))->setPaper('a4');
+        $pdf = PDF::loadview('Transaksi/sales/invoice_pdf',['id'=>$nota_id,'sales'=>$sales, 'sales_detail'=>$sales_detail, 'product'=>$product, 'user'=>$user, 'customer'=>$customer])->setPaper('a4');
     	return $pdf->stream('invoice-pdf');
     }
 
@@ -141,7 +141,7 @@ class SalesController extends Controller
         $sales = DB::table('sales')->get();
         $sales_detail = DB::table('sales_detail')->get();
 
-        $pdf = PDF::loadview('Transaksi/sales/sales_pdf',['sales'=>$sales, 'sales_detail'=>$sales_detail, 'product'=>$product, 'user'=>$user, 'customer'=>$customer], compact('invoice'))->setPaper('a4');
+        $pdf = PDF::loadview('Transaksi/sales/sales_pdf',['sales'=>$sales, 'sales_detail'=>$sales_detail, 'product'=>$product, 'user'=>$user, 'customer'=>$customer])->setPaper('a4');
     	return $pdf->stream('sales-pdf');
     }
 }

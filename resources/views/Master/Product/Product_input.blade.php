@@ -46,7 +46,7 @@
 	  <div class="input-group">
 		  <label class="col-sm-3 form-control-label">Product Price</label>
 		  <div class="input-group-prepend"><span class="input-group-text">Rp.</span></div>
-		  	<input type="text" class="col-sm-2 form-control" name="prprice" id="prprice">
+		  	<input type="text" class="col-sm-2 form-control" name="prprice" id="prprice" required>
 		  <div class="input-group-append"><span class="input-group-text">.00</span></div>
 		  </div>
 	  </div>
@@ -54,14 +54,14 @@
 	  <div class="form-group row">
 		<label class="col-sm-3 form-control-label">Product Stock</label>
 			<div class="col-sm-3">
-		 	 <input type="number" class="form-control" name="prstock" id="prstock">
+		 	 <input type="number" class="form-control" name="prstock" id="prstock" required>
 			</div>
 	  </div>
 	  <div class="line"></div>
 	  <div class="form-group row">
 	 	<label class="col-sm-3 form-control-label">Explenation</label>
 	  	<div class="col-sm-9">
-			<input type="text" class="form-control" name="prex" id="prex">
+			<input type="text" class="form-control" name="prex" id="prex" required>
 	 	 </div>
 	  </div>
 	  <div class="line"></div>
